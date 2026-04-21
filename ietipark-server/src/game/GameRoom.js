@@ -10,6 +10,15 @@ class GameRoom {
             direction: 1
         };
 
+        // Activitat 10: La porta impedeix avançar
+        this.door = {
+            x: 100,
+            y: 0,
+            width: 5,
+            height: 25,
+            isOpen: false // Per defecte tancada en Sprint 1
+        };
+
         this.colors = ['azul', 'rojo', 'verde', 'amarillo', 'marron', 'morado', 'naranja'];
         this.usedColors = new Set();
 
@@ -94,7 +103,8 @@ class GameRoom {
             if (this.broadcastState) {
                 const gameState = {
                     players: Object.values(this.players),
-                    obstacle: this.obstacle
+                    obstacle: this.obstacle,
+                    door: this.door
                 };
                 this.broadcastState(gameState);
             }
@@ -106,6 +116,8 @@ class GameRoom {
         const GRAVITY = -200;
         const JUMP_POWER = 120;
         const GROUND_Y = 0;
+        const PLAYER_W = 8;
+        const PLAYER_H = 10;
 
         // Actualitzar cada jugador
         for (let id in this.players) {
@@ -122,8 +134,30 @@ class GameRoom {
 
             p.vy += GRAVITY * delta;
 
-            p.x += p.vx * delta;
-            p.y += p.vy * delta;
+            // Intent de moviment x
+            let nextX = p.x + p.vx * delta;
+            let nextY = p.y + p.vy * delta;
+
+            // --- COL·LISIONS AMB LA PORTA (Activitat 10) ---
+            if (!this.door.isOpen) {
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, this.door.x, this.door.y, this.door.width, this.door.height)) {
+                    nextX = p.x; // Bloqueja moviment X
+                }
+            }
+
+            // --- COL·LISIONS AMB ALTRES JUGADORS (Activitat 10) ---
+            for (let otherId in this.players) {
+                if (id === otherId) continue;
+                const other = this.players[otherId];
+                if (this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
+                    // Obstaculització simple: bloqueja el moviment si col·lisionen
+                    nextX = p.x;
+                    // No bloquegem Y per evitar que es quedin flotant un sobre l'altre de forma estranya en aquest Sprint
+                }
+            }
+
+            p.x = nextX;
+            p.y = nextY;
 
             if (p.y <= GROUND_Y) {
                 p.y = GROUND_Y;
@@ -147,6 +181,14 @@ class GameRoom {
             this.obstacle.x = 30;
             this.obstacle.direction = 1;
         }
+    }
+
+    // Utilitat de col·lisió AABB
+    checkCollision(x1, y1, w1, h1, x2, y2, w2, h2) {
+        return x1 < x2 + w2 &&
+               x1 + w1 > x2 &&
+               y1 < y2 + h2 &&
+               y1 + h1 > y2;
     }
 }
 
