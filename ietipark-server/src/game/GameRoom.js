@@ -9,14 +9,14 @@ class GameRoom {
             speed: 50, // units per second
             direction: 1
         };
-        
+
         this.colors = ['azul', 'rojo', 'verde', 'amarillo', 'marron', 'morado', 'naranja'];
         this.usedColors = new Set();
-        
+
         // Loop a 20 FPS (50ms)
-        this.tickRate = 50; 
+        this.tickRate = 50;
         this.lastTime = Date.now();
-        
+
         this.startGameLoop();
     }
 
@@ -68,7 +68,7 @@ class GameRoom {
 
     updatePlayerInputs(id, directionEnum) {
         if (!this.players[id]) return;
-        
+
         // Resetejar inputs
         const inputs = this.players[id].inputs;
         for (let key in inputs) {
@@ -76,10 +76,10 @@ class GameRoom {
         }
 
         // Activació segons l'enum de la direcció (amunt fa saltar).
-        if(directionEnum !== 'none' && directionEnum !== '') {
-             if (directionEnum.toLowerCase().includes('left')) inputs.left = true;
-             if (directionEnum.toLowerCase().includes('right')) inputs.right = true;
-             if (directionEnum.toLowerCase().includes('up')) inputs.jump = true;
+        if (directionEnum !== 'none' && directionEnum !== '') {
+            if (directionEnum.toLowerCase().includes('left')) inputs.left = true;
+            if (directionEnum.toLowerCase().includes('right')) inputs.right = true;
+            if (directionEnum.toLowerCase().includes('up')) inputs.jump = true;
         }
     }
 
@@ -110,7 +110,7 @@ class GameRoom {
         // Actualitzar cada jugador
         for (let id in this.players) {
             const p = this.players[id];
-            
+
             p.vx = 0;
             if (p.inputs.left) p.vx = -P_SPEED;
             if (p.inputs.right) p.vx = P_SPEED;
@@ -132,10 +132,10 @@ class GameRoom {
             } else {
                 p.onGround = false;
             }
-            
+
             // Límits pantalla relacionats amb libGDX (assumint món 110x80)
             if (p.x < 0) p.x = 0;
-            if (p.x > 110) p.x = 110; 
+            if (p.x > 110) p.x = 110;
         }
 
         // Moure l'obstacle de costat a costat (obstacle patrulla simple)

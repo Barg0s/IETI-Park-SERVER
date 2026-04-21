@@ -19,8 +19,15 @@ const broadcast = (wss, type, data) => {
 
 const handleJoin = (wss, ws, data) => {
     const nickname = data.nickname || `Player_${ws.id.substring(0,4)}`;
-    
-    // Afegim jugador al mon de fisica
+
+    // Enforce the 2-8 player cooperative limit
+    if (Object.keys(room.players).length >= 8) {
+        sendToSocket(ws, 'room:full', { message: 'Room is full (max 8 players)' });
+        ws.close();
+        return;
+    }
+
+    // Add the player to the physics world
     const player = room.addPlayer(ws.id, nickname);
 
     console.log(`[GAME] Nou jugador a la sala - ${nickname} (Color: ${player.color})`);

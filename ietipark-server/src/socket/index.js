@@ -11,9 +11,19 @@ const initSocket = (server) => {
     startBroadcasting(wss);
 
     wss.on('connection', (ws) => {
-        // Generar un ID únic per aquesta connexió i adjuntar-lo a l'objecte "ws"
+        // Generate a unique ID for this connection and attach it to the ws object
         ws.id = uuidv4();
-        console.log(`[WS] Nova connexio detectada: ${ws.id}`);
+        console.log(`[WS] New connection: ${ws.id}`);
+
+        // Send the current room state immediately so any observer (e.g. menu screen)
+        // can display who is already connected without waiting for a join/leave event
+        const room = require('../game/GameRoom');
+        if (ws.readyState === 1) {
+            ws.send(JSON.stringify({
+                type: 'room:update',
+                data: { players: Object.values(room.players) }
+            }));
+        }
 
         ws.on('message', (message) => {
             try {
