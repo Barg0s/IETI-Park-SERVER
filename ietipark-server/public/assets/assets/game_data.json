@@ -1,0 +1,219 @@
+{
+  "name": "ieti-park",
+  "description": "",
+  "levels": [
+    {
+      "name": "level1",
+      "description": "",
+      "gameplayData": "",
+      "layers": [
+        {
+          "name": "base",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_000_layer_000.json"
+        },
+        {
+          "name": "puerta",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_000_layer_001.json"
+        }
+      ],
+      "layerGroups": [
+        {
+          "id": "__main__",
+          "name": "Main",
+          "collapsed": false
+        }
+      ],
+      "sprites": [
+        {
+          "name": "key",
+          "gameplayData": "",
+          "type": "key",
+          "animationId": "anim_1776694275268338",
+          "x": 216,
+          "y": 239,
+          "width": 21,
+          "height": 47,
+          "imageFile": "media/Key 8 - GOLD - Spritesheet.png",
+          "flipX": false,
+          "flipY": false,
+          "depth": 0.0,
+          "groupId": "__main__"
+        },
+        {
+          "name": "lock",
+          "gameplayData": "",
+          "type": "lock",
+          "animationId": "anim_1776696025189779",
+          "x": 285,
+          "y": 335,
+          "width": 20,
+          "height": 33,
+          "imageFile": "media/Triangle Padlock - GOLD - Spritesheet.png",
+          "flipX": false,
+          "flipY": false,
+          "depth": 0.0,
+          "groupId": "__main__"
+        }
+      ],
+      "spriteGroups": [
+        {
+          "id": "__main__",
+          "name": "Main",
+          "collapsed": false
+        }
+      ],
+      "groupId": "__main__",
+      "viewportWidth": 320,
+      "viewportHeight": 180,
+      "viewportX": 1,
+      "viewportY": 198,
+      "viewportAdaptation": "letterbox",
+      "viewportInitialColor": "green",
+      "viewportPreviewColor": "blue",
+      "backgroundColorHex": "#DCDCE1",
+      "depthSensitivity": 0.08,
+      "zonesFile": "zones/level_000_zones.json",
+      "pathsFile": "paths/level_000_paths.json"
+    }
+  ],
+  "levelGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "mediaAssets": [
+    {
+      "name": "sunken_blocky",
+      "fileName": "media/sunken_blocky.png",
+      "mediaType": "tileset",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "key",
+      "fileName": "media/Key 8 - GOLD - Spritesheet.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 21,
+      "tileHeight": 47,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_amarillo",
+      "fileName": "media/owlet_amarillo.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_azul",
+      "fileName": "media/owlet_azul.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_base",
+      "fileName": "media/owlet_base.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_marron",
+      "fileName": "media/owlet_marron.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_morado",
+      "fileName": "media/owlet_morado.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_naranja",
+      "fileName": "media/owlet_naranja.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_rojo",
+      "fileName": "media/owlet_rojo.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "owlet_verde",
+      "fileName": "media/owlet_verde.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "lock",
+      "fileName": "media/Triangle Padlock - GOLD - Spritesheet.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 20,
+      "tileHeight": 33,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    }
+  ],
+  "mediaGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "zoneTypes": [
+    {
+      "name": "Default",
+      "color": "blue"
+    }
+  ],
+  "animationsFile": "animations/animations.json"
+}

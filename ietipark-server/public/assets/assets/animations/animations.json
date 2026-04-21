@@ -1,0 +1,1788 @@
+{
+  "animationGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    },
+    {
+      "id": "__group_1776694993482538_0",
+      "name": "objects",
+      "collapsed": false
+    },
+    {
+      "id": "__group_1776695007652996_1",
+      "name": "characters",
+      "collapsed": true
+    }
+  ],
+  "animations": [
+    {
+      "id": "anim_1776694275268338",
+      "name": "key",
+      "mediaFile": "media/Key 8 - GOLD - Spritesheet.png",
+      "startFrame": 0,
+      "endFrame": 28,
+      "fps": 12.0,
+      "loop": true,
+      "groupId": "__group_1776694993482538_0",
+      "anchorX": 0.4448914684371748,
+      "anchorY": 0.6467118087616702,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 0,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 1,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 2,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 3,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 4,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 5,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 6,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 7,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 8,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 12,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 13,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 14,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 15,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 16,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 24,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.4448914684371748,
+          "anchorY": 0.6467118087616702,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776696025189779",
+      "name": "lock",
+      "mediaFile": "media/Triangle Padlock - GOLD - Spritesheet.png",
+      "startFrame": 0,
+      "endFrame": 15,
+      "fps": 9.0,
+      "loop": false,
+      "groupId": "__group_1776694993482538_0",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 0,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 1,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 2,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 3,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 4,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 5,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 6,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 7,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 8,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 12,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 13,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 14,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 15,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695503849171",
+      "name": "green_character_parao",
+      "mediaFile": "media/owlet_verde.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49179234636298347,
+      "anchorY": 0.7308402585410895,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.49179234636298347,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.49179234636298347,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.49179234636298347,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.49179234636298347,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695526274944",
+      "name": "green_character_move",
+      "mediaFile": "media/owlet_verde.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49589617318149176,
+      "anchorY": 0.769826613316918,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.769826613316918,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695539229847",
+      "name": "green_character_jump",
+      "mediaFile": "media/owlet_verde.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.4938442597722376,
+      "anchorY": 0.7410998255873602,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695436113145",
+      "name": "red_character_parao",
+      "mediaFile": "media/owlet_rojo.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.4897404329537294,
+      "anchorY": 0.7390479121781061,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.4897404329537294,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.4897404329537294,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.4897404329537294,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.4897404329537294,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695461990912",
+      "name": "red_character_move",
+      "mediaFile": "media/owlet_rojo.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.4938442597722376,
+      "anchorY": 0.7677746999076639,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.4938442597722376,
+          "anchorY": 0.7677746999076639,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695476382735",
+      "name": "red_character_jump",
+      "mediaFile": "media/owlet_rojo.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49589617318149176,
+      "anchorY": 0.7328921719503436,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695363918697",
+      "name": "orange_character_parao",
+      "mediaFile": "media/owlet_naranja.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49589617318149176,
+      "anchorY": 0.7328921719503436,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695376311334",
+      "name": "orange_character_move",
+      "mediaFile": "media/owlet_naranja.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49794808659074585,
+      "anchorY": 0.7759823535446804,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7759823535446804,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695400844345",
+      "name": "orange_character_jump",
+      "mediaFile": "media/owlet_naranja.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49589617318149176,
+      "anchorY": 0.7349440853595978,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695290167010",
+      "name": "purple_character_parao",
+      "mediaFile": "media/owlet_morado.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5041038268185083,
+      "anchorY": 0.7349440853595978,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7349440853595978,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695301800415",
+      "name": "purple_character_move",
+      "mediaFile": "media/owlet_morado.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5082076536370165,
+      "anchorY": 0.7595670462706473,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7595670462706473,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695320829318",
+      "name": "purple_character_jump",
+      "mediaFile": "media/owlet_morado.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49589617318149176,
+      "anchorY": 0.7328921719503436,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.49589617318149176,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695167989007",
+      "name": "brown_character_parao",
+      "mediaFile": "media/owlet_marron.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5123114804555248,
+      "anchorY": 0.7369959987688519,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.5123114804555248,
+          "anchorY": 0.7369959987688519,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.5123114804555248,
+          "anchorY": 0.7369959987688519,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.5123114804555248,
+          "anchorY": 0.7369959987688519,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.5123114804555248,
+          "anchorY": 0.7369959987688519,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695215692915",
+      "name": "brown_character_move",
+      "mediaFile": "media/owlet_marron.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5061557402277624,
+      "anchorY": 0.7739304401354262,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7739304401354262,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695235054207",
+      "name": "brown_character_jump",
+      "mediaFile": "media/owlet_marron.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49794808659074585,
+      "anchorY": 0.7390479121781061,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695063609462",
+      "name": "white_character_parao",
+      "mediaFile": "media/owlet_base.png",
+      "startFrame": 8,
+      "endFrame": 15,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49794808659074585,
+      "anchorY": 0.722632604904073,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 12,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 13,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 14,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 15,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.722632604904073,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695107481977",
+      "name": "white_character_move",
+      "mediaFile": "media/owlet_base.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.49794808659074585,
+      "anchorY": 0.7718785267261721,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.49794808659074585,
+          "anchorY": 0.7718785267261721,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776695132116128",
+      "name": "white_character_jump",
+      "mediaFile": "media/owlet_base.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5,
+      "anchorY": 0.7308402585410895,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.5,
+          "anchorY": 0.7308402585410895,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694983452392",
+      "name": "blue_character_jump",
+      "mediaFile": "media/owlet_azul.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5082076536370165,
+      "anchorY": 0.7410998255873602,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.5082076536370165,
+          "anchorY": 0.7410998255873602,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694938814384",
+      "name": "blue_character_move",
+      "mediaFile": "media/owlet_azul.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5041038268185083,
+      "anchorY": 0.7636708730891556,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.5041038268185083,
+          "anchorY": 0.7636708730891556,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694909778450",
+      "name": "blue_character_parao",
+      "mediaFile": "media/owlet_azul.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5020519134092541,
+      "anchorY": 0.7287883451318354,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7287883451318354,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7287883451318354,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7287883451318354,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7287883451318354,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694772029030",
+      "name": "yellow_character_move",
+      "mediaFile": "media/owlet_amarillo.png",
+      "startFrame": 24,
+      "endFrame": 29,
+      "fps": 9.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5020519134092541,
+      "anchorY": 0.7657227864984097,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 24,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 25,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 26,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 27,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 28,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 29,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7657227864984097,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694808716210",
+      "name": "yellow_character_jump",
+      "mediaFile": "media/owlet_amarillo.png",
+      "startFrame": 16,
+      "endFrame": 23,
+      "fps": 10.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5061557402277624,
+      "anchorY": 0.7328921719503436,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 16,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 17,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 18,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 19,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 20,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 21,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 22,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 23,
+          "anchorX": 0.5061557402277624,
+          "anchorY": 0.7328921719503436,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    },
+    {
+      "id": "anim_1776694725966259",
+      "name": "yellow_character_parao",
+      "mediaFile": "media/owlet_amarillo.png",
+      "startFrame": 8,
+      "endFrame": 11,
+      "fps": 7.0,
+      "loop": true,
+      "groupId": "__group_1776695007652996_1",
+      "anchorX": 0.5020519134092541,
+      "anchorY": 0.7390479121781061,
+      "anchorColor": "red",
+      "hitBoxes": [],
+      "frameRigs": [
+        {
+          "frame": 8,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 9,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 10,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        },
+        {
+          "frame": 11,
+          "anchorX": 0.5020519134092541,
+          "anchorY": 0.7390479121781061,
+          "anchorColor": "red",
+          "hitBoxes": []
+        }
+      ]
+    }
+  ]
+}
