@@ -213,6 +213,10 @@
     {
       "name": "Default",
       "color": "blue"
+    },
+    {
+      "name": "Category 2",
+      "color": "red"
     }
   ],
   "animationsFile": "animations/animations.json"

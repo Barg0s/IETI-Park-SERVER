@@ -9,7 +9,7 @@
   "zones": [
     {
       "name": "suelo",
-      "type": "suelos",
+      "type": "Default",
       "gameplayData": "",
       "x": 1,
       "y": 352,
@@ -20,7 +20,7 @@
     },
     {
       "name": "puerta",
-      "type": "suelos",
+      "type": "Default",
       "gameplayData": "",
       "x": 295,
       "y": 162,
