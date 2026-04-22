@@ -3,10 +3,10 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "6bd910fede09ec51fba8a608b81d47c3",
-"assets/AssetManifest.bin.json": "61ddf9499c447ee0ad404b6f50961951",
+const RESOURCES = {"assets/AssetManifest.bin": "e8b135bd799f08812e3a7d5021ddc65f",
+"assets/AssetManifest.bin.json": "229d3ce13e63e01fc4b12c1e147a7cc2",
 "assets/assets/animations/animations.json": "76e2620551ee4bccf373d0197fe1a449",
-"assets/assets/game_data.json": "5739946c66677ba63fcd99c0af9f3c35",
+"assets/assets/game_data.json": "0ffd3098668487ae1442204f9252f9cc",
 "assets/assets/media/Extending%2520Padlock%2520-%2520GOLD%2520-%2520Spritesheet.png": "8a9a046d7042a4296dcce3d3cde4f8de",
 "assets/assets/media/Key%25208%2520-%2520GOLD%2520-%2520Spritesheet.png": "69f0730d20a52c4e6ca07f51c9a7ecf6",
 "assets/assets/media/owlet_amarillo.png": "30e1c219807a31870353d640a1c61a52",
@@ -22,6 +22,8 @@ const RESOURCES = {"assets/AssetManifest.bin": "6bd910fede09ec51fba8a608b81d47c3
 "assets/assets/paths/level_000_paths.json": "a1a66dbea9858b8458dd085ffc251ddd",
 "assets/assets/tilemaps/level_000_layer_000.json": "164baa1049189fe6c14f6c7cb9dfc896",
 "assets/assets/tilemaps/level_000_layer_001.json": "21b80bc883490fcbe400c6ca481d5a88",
+"assets/assets/tilemaps/level_000_layer_002.json": "e0fd4a4b0524e9cca237a2c4aa0aa830",
+"assets/assets/tilemaps/level_000_layer_003.json": "7b6510862398e7277ea0592b6ae77872",
 "assets/assets/zones/level_000_zones.json": "8ada921f39613fe488482313284539d8",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "c0ad29d56cfe3890223c02da3c6e0448",
@@ -43,14 +45,14 @@ const RESOURCES = {"assets/AssetManifest.bin": "6bd910fede09ec51fba8a608b81d47c3
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "2a68a242a2575ca3f09fb360b5f4cc0d",
+"flutter_bootstrap.js": "ac1d7365df810508962e6d12327fcece",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "index.html": "07134f538a456bcb34a2d76732f0b86d",
 "/": "07134f538a456bcb34a2d76732f0b86d",
-"main.dart.js": "61ae4cf3b84e3b3d48dac85b4d9a7c88",
+"main.dart.js": "acf0c5829b9d9d64af33285386a95edb",
 "manifest.json": "0e1a3a343aae6d7f2138d36b43b0eb27",
 "version.json": "287f8110cb7534ebd0c81680606d62fb"};
 // The application shell files that are downloaded before a service worker can

@@ -32,12 +32,43 @@
           "visible": true,
           "groupId": "__main__",
           "tileMapFile": "tilemaps/level_000_layer_001.json"
+        },
+        {
+          "name": "pilar_background",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__group_1776854773517938_0",
+          "tileMapFile": "tilemaps/level_000_layer_002.json"
+        },
+        {
+          "name": "background",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__group_1776854773517938_0",
+          "tileMapFile": "tilemaps/level_000_layer_003.json"
         }
       ],
       "layerGroups": [
         {
           "id": "__main__",
           "name": "Main",
+          "collapsed": false
+        },
+        {
+          "id": "__group_1776854773517938_0",
+          "name": "background",
           "collapsed": false
         }
       ],
@@ -213,10 +244,6 @@
     {
       "name": "Default",
       "color": "blue"
-    },
-    {
-      "name": "Category 2",
-      "color": "red"
     }
   ],
   "animationsFile": "animations/animations.json"
