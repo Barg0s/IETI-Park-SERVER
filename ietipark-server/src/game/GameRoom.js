@@ -2,20 +2,27 @@ class GameRoom {
     constructor() {
         this.players = {}; // Guardarem jugadors per WebSocket
         this.obstacle = {
-            x: 50,
-            y: 0,
+            x: 280,
+            y: 180,
             width: 20,
-            height: 20,
-            speed: 50, // units per second
+            height: 33,
+            speed: 0, // units per second
             direction: 1
         };
 
+        this.key = {
+            x: 225,
+            y: 275,
+            width: 20,
+            height: 47,
+        }
+
         // Activitat 10: La porta impedeix avançar
         this.door = {
-            x: 100,
-            y: 0,
+            x: 300,
+            y: 160,
             width: 5,
-            height: 25,
+            height: 32,
             isOpen: false // Per defecte tancada en Sprint 1
         };
 
@@ -43,13 +50,15 @@ class GameRoom {
                 break;
             }
         }
+        
+        const spawnIndex = Object.keys(this.players).length;
 
         this.players[id] = {
             id: id,
             nickname: nickname,
             color: assignedColor,
-            x: 20,
-            y: 50,
+            x: 20 + spawnIndex * 40,
+            y: 160,
             vx: 0,
             vy: 0,
             onGround: false,
@@ -88,7 +97,9 @@ class GameRoom {
         if (directionEnum !== 'none' && directionEnum !== '') {
             if (directionEnum.toLowerCase().includes('left')) inputs.left = true;
             if (directionEnum.toLowerCase().includes('right')) inputs.right = true;
-            if (directionEnum.toLowerCase().includes('up')) inputs.jump = true;
+            if (directionEnum === 'up') {
+                inputs.jump = true; // SOLO EVENTO
+            }
         }
     }
 
@@ -104,7 +115,8 @@ class GameRoom {
                 const gameState = {
                     players: Object.values(this.players),
                     obstacle: this.obstacle,
-                    door: this.door
+                    door: this.door,
+                    key: this.key,
                 };
                 this.broadcastState(gameState);
             }
@@ -115,9 +127,9 @@ class GameRoom {
         const P_SPEED = 80;
         const GRAVITY = -200;
         const JUMP_POWER = 120;
-        const GROUND_Y = 0;
-        const PLAYER_W = 8;
-        const PLAYER_H = 10;
+        const GROUND_Y = 160;
+        const PLAYER_W = 32;
+        const PLAYER_H = 32;
 
         // Actualitzar cada jugador
         for (let id in this.players) {
@@ -130,6 +142,7 @@ class GameRoom {
             if (p.inputs.jump && p.onGround) {
                 p.vy = JUMP_POWER;
                 p.onGround = false;
+                p.inputs.jump = false;
             }
 
             p.vy += GRAVITY * delta;
@@ -152,6 +165,7 @@ class GameRoom {
                 if (this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
                     // Obstaculització simple: bloqueja el moviment si col·lisionen
                     nextX = p.x;
+                    // FIX: He borrado la linea "nextX = p.y;" que había aquí porque era un bug que teletransportaba al jugador
                     // No bloquegem Y per evitar que es quedin flotant un sobre l'altre de forma estranya en aquest Sprint
                 }
             }
@@ -167,19 +181,9 @@ class GameRoom {
                 p.onGround = false;
             }
 
-            // Límits pantalla relacionats amb libGDX (assumint món 110x80)
+            // Límits pantalla relacionats amb libGDX (assumint món 800x...)
             if (p.x < 0) p.x = 0;
-            if (p.x > 110) p.x = 110;
-        }
-
-        // Moure l'obstacle de costat a costat (obstacle patrulla simple)
-        this.obstacle.x += this.obstacle.speed * this.obstacle.direction * delta;
-        if (this.obstacle.x > 80) {
-            this.obstacle.x = 80;
-            this.obstacle.direction = -1;
-        } else if (this.obstacle.x < 30) {
-            this.obstacle.x = 30;
-            this.obstacle.direction = 1;
+            if (p.x > 800) p.x = 800;
         }
     }
 
