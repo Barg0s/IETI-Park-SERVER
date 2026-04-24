@@ -15,7 +15,7 @@ class GameRoom {
                 precipice: null,
                 platform: null,
                 obstacle: { x: 280, y: 180, width: 20, height: 33, speed: 100, direction: 1, minX: 200, maxX: 500 },
-                key: { x: 225, y: 170, width: 20, height: 47, state: 'floor', carriedBy: null },
+                key: { x: 225, y: 300, width: 20, height: 47, state: 'floor', carriedBy: null },
                 door: { x: 740, y: 160, width: 20, height: 160, isOpen: false }
             },
             2: {
