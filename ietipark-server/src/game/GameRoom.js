@@ -48,7 +48,7 @@ class GameRoom {
         this.levelTransitioning = false;
         this.obstacle = cfg.obstacle ? { ...cfg.obstacle } : null;
         this.key = cfg.key ? { ...cfg.key } : null;
-        this.door = { ...cfg.door };
+        this.door = structuredClone(cfg.door);
         this.platform = cfg.platform ? { ...cfg.platform } : null;
         this.precipice = cfg.precipice ? { ...cfg.precipice } : null;
     }
@@ -86,27 +86,24 @@ class GameRoom {
     }
 
     updatePlayerInputs(id, directionEnum) {
-        if (!this.players[id]) return;
+        const player = this.players[id];
+        if (!player) return;
 
-        const inputs = this.players[id].inputs;
+        const inputs = player.inputs;
+
+        // RESET siempre primero
+        inputs.left = false;
+        inputs.right = false;
+        inputs.jump = false;
 
         if (!directionEnum || directionEnum === 'none') return;
 
         const dir = directionEnum.toLowerCase();
 
-        if (dir.includes('left')) {
-            inputs.left = true;
-            inputs.right = false;
-        }
+        if (dir.includes('left')) inputs.left = true;
+        if (dir.includes('right')) inputs.right = true;
 
-        if (dir.includes('right')) {
-            inputs.right = true;
-            inputs.left = false;
-        }
-
-        if (dir === 'up') {
-            inputs.jump = true;
-        }
+        if (dir === 'up') inputs.jump = true;
     }
 
     startGameLoop() {
