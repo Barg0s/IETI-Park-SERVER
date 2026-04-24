@@ -12,7 +12,10 @@ const originalWarn = console.warn;
 const originalError = console.error;
 
 function getTimestamp() {
-    return '[' + new Date().toISOString().replace('T', ' ').substring(0, 19) + ']';
+    return '[' + new Date().toLocaleString('es-ES', {
+        timeZone: 'Europe/Madrid',
+        hour12: false
+    }) + ']';
 }
 
 console.log = function() {
