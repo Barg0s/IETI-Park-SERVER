@@ -87,12 +87,25 @@ class GameRoom {
 
     updatePlayerInputs(id, directionEnum) {
         if (!this.players[id]) return;
+
         const inputs = this.players[id].inputs;
-        for (let k in inputs) inputs[k] = false;
-        if (directionEnum !== 'none' && directionEnum !== '') {
-            if (directionEnum.toLowerCase().includes('left')) inputs.left = true;
-            if (directionEnum.toLowerCase().includes('right')) inputs.right = true;
-            if (directionEnum === 'up') inputs.jump = true;
+
+        if (!directionEnum || directionEnum === 'none') return;
+
+        const dir = directionEnum.toLowerCase();
+
+        if (dir.includes('left')) {
+            inputs.left = true;
+            inputs.right = false;
+        }
+
+        if (dir.includes('right')) {
+            inputs.right = true;
+            inputs.left = false;
+        }
+
+        if (dir === 'up') {
+            inputs.jump = true;
         }
     }
 
@@ -152,8 +165,25 @@ class GameRoom {
 
             // --- COL·LISIÓ PORTA TANCADA ---
             if (!this.door.isOpen) {
-                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, this.door.x, this.door.y, this.door.width, this.door.height)) {
+                const door = this.door;
+
+                // colisión horizontal
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H,
+                    door.x, door.y, door.width, door.height)) {
                     nextX = p.x;
+                }
+
+                // colisión vertical (IMPORTANTE)
+                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H,
+                    door.x, door.y, door.width, door.height)) {
+                    if (p.vy > 0) {
+                        nextY = door.y - PLAYER_H; // cae encima
+                        p.vy = 0;
+                        setOnGround = true;
+                    } else if (p.vy < 0) {
+                        nextY = p.y; // choca por abajo
+                        p.vy = 0;
+                    }
                 }
             }
 
