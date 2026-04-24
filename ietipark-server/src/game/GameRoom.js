@@ -6,28 +6,34 @@ class GameRoom {
         this.levelTransitioning = false;
 
         // === CONFIGURACIÓ DELS NIVELLS ===
+        // === CONFIGURACIÓ DELS NIVELLS (Ajustado para Sprites 64x64) ===
         this.levelConfigs = {
             1: {
-                groundY: 160,
+                groundY: 64,          // El suelo ahora está a 64px (antes 160 era demasiado alto)
                 worldWidth: 800,
                 spawnX: 30,
-                spawnY: 160,
+                spawnY: 64,          // Aparecen justo sobre el suelo
                 precipice: null,
                 platform: null,
-                obstacle: { x: 280, y: 180, width: 20, height: 33, speed: 100, direction: 1, minX: 200, maxX: 500 },
-                key: { x: 225, y: 300, width: 20, height: 47, state: 'floor', carriedBy: null },
-                door: { x: 740, y: 160, width: 20, height: 160, isOpen: false }
+                // Obstáculo ajustado para ser una amenaza de 64px
+                obstacle: { x: 280, y: 64, width: 32, height: 64, speed: 100, direction: 1, minX: 200, maxX: 500 },
+                // Llave un poco más alta para que sea fácil de ver
+                key: { x: 225, y: 200, width: 30, height: 30, state: 'floor', carriedBy: null },
+                // Puerta ajustada a la nueva altura del suelo
+                door: { x: 740, y: 64, width: 40, height: 100, isOpen: false }
             },
             2: {
-                groundY: 160,
+                groundY: 64,
                 worldWidth: 800,
                 spawnX: 30,
-                spawnY: 160,
-                precipice: { x: 350, y: 0, width: 100, height: 160 },
-                platform: { x: 370, y: 220, width: 60, height: 10 },
+                spawnY: 64,
+                // Precipicio ajustado al nuevo groundY
+                precipice: { x: 350, y: 0, width: 100, height: 64 },
+                // Plataforma un poco más alta para que tengan que saltar
+                platform: { x: 370, y: 180, width: 80, height: 20 },
                 obstacle: null,
                 key: null,
-                door: { x: 740, y: 160, width: 20, height: 160, isOpen: false }
+                door: { x: 740, y: 64, width: 40, height: 100, isOpen: false }
             }
         };
 
