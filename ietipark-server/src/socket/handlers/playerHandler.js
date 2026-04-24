@@ -27,6 +27,12 @@ const handleJoin = (wss, ws, data) => {
         return;
     }
 
+    // Iniciar el timer de la partida quan entra el primer jugador
+    if (Object.keys(room.players).length === 0) {
+        room._partidaInici = new Date();
+        console.log('[GAME] Partida iniciada!');
+    }
+
     // Add the player to the physics world
     const player = room.addPlayer(ws.id, nickname);
 
