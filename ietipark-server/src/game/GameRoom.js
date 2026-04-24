@@ -142,7 +142,12 @@ class GameRoom {
     }
 
     updatePhysics(delta) {
-        const P_SPEED = 80, GRAVITY = -200, JUMP_POWER = 120, PLAYER_W = 32, PLAYER_H = 32;
+        // Dentro de updatePhysics(delta)
+        const P_SPEED = 120;      // Aumentado (antes 80) para que no parezcan caracoles
+        const GRAVITY = -400;     // Aumentado (antes -200) para una caída más natural con el nuevo tamaño
+        const JUMP_POWER = 300;   // Aumentado (antes 120) para que puedan saltar sobre otros de 64px
+        const PLAYER_W = 64;      // Tu nuevo ancho de sprite
+        const PLAYER_H = 64;      // Tu nuevo alto de sprite
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
@@ -164,22 +169,22 @@ class GameRoom {
             if (!this.door.isOpen) {
                 const door = this.door;
 
-                // colisión horizontal
-                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H,
-                    door.x, door.y, door.width, door.height)) {
+                // colisión horizontal (Se queda igual)
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
                     nextX = p.x;
                 }
 
-                // colisión vertical (IMPORTANTE)
-                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H,
-                    door.x, door.y, door.width, door.height)) {
-                    if (p.vy > 0) {
-                        nextY = door.y - PLAYER_H; // cae encima
+                // colisión vertical (¡CORREGIDA!)
+                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
+                    if (p.vy > 0) { 
+                        // Saltando hacia arriba: choca por debajo del dintel de la puerta
+                        nextY = door.y - PLAYER_H; 
                         p.vy = 0;
-                        setOnGround = true;
-                    } else if (p.vy < 0) {
-                        nextY = p.y; // choca por abajo
+                    } else if (p.vy < 0) { 
+                        // Cayendo: aterriza en la parte superior (techo) de la puerta
+                        nextY = door.y + door.height; 
                         p.vy = 0;
+                        setOnGround = true; 
                     }
                 }
             }
@@ -188,14 +193,23 @@ class GameRoom {
             for (let otherId in this.players) {
                 if (id === otherId) continue;
                 const other = this.players[otherId];
+
+                // Colisión Horizontal
                 if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
                     nextX = p.x;
                 }
+
+                // Colisión Vertical (Corregida para 64x64)
                 if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
-                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 1) {
-                        nextY = other.y + PLAYER_H; p.vy = 0; setOnGround = true;
-                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 1) {
-                        nextY = p.y; p.vy = 0;
+                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 5) { 
+                        // CAYENDO: p se apoya sobre 'other'
+                        nextY = other.y + PLAYER_H; 
+                        p.vy = 0; 
+                        setOnGround = true;
+                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 5) {
+                        // SALTANDO: p golpea la cabeza de 'other' desde abajo
+                        nextY = other.y - PLAYER_H;
+                        p.vy = 0;
                     }
                 }
             }
@@ -244,9 +258,10 @@ class GameRoom {
                 }
             }
             // La clau segueix el portador (dibuixada sobre el jugador a l'APP)
+            // Dentro de updatePhysics, donde la llave sigue al portador:
             if (this.key && this.key.state === 'carried' && this.key.carriedBy === id) {
-                this.key.x = p.x + PLAYER_W * 0.5;
-                this.key.y = p.y + PLAYER_H + 5;
+                this.key.x = p.x + (PLAYER_W * 0.5) - (this.key.width * 0.5); // Centrada
+                this.key.y = p.y + PLAYER_H + 10; // 10 píxeles por encima de la cabeza (antes era 5)
             }
 
             // --- TASK 20: CLAU OBRE LA PORTA ---
