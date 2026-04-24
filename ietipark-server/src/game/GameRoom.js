@@ -29,8 +29,8 @@ class GameRoom {
         this.colors = ['azul', 'rojo', 'verde', 'amarillo', 'marron', 'morado', 'naranja'];
         this.usedColors = new Set();
 
-        // Loop a 20 FPS (50ms)
-        this.tickRate = 50;
+        // Loop a 60 FPS (16ms) para evitar lag en el cliente
+        this.tickRate = 16;
         this.lastTime = Date.now();
 
         this.startGameLoop();
@@ -113,8 +113,18 @@ class GameRoom {
 
             if (this.broadcastState) {
                 const gameState = {
-                    players: Object.values(this.players),
-                    obstacle: this.obstacle,
+                    players: Object.values(this.players).map(p => ({
+                        ...p,
+                        x: parseFloat(p.x.toFixed(1)),
+                        y: parseFloat(p.y.toFixed(1)),
+                        vx: parseFloat(p.vx.toFixed(1)),
+                        vy: parseFloat(p.vy.toFixed(1))
+                    })),
+                    obstacle: {
+                        ...this.obstacle,
+                        x: parseFloat(this.obstacle.x.toFixed(1)),
+                        y: parseFloat(this.obstacle.y.toFixed(1))
+                    },
                     door: this.door,
                     key: this.key,
                 };
@@ -162,11 +172,24 @@ class GameRoom {
             for (let otherId in this.players) {
                 if (id === otherId) continue;
                 const other = this.players[otherId];
-                if (this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
-                    // Obstaculització simple: bloqueja el moviment si col·lisionen
+                
+                // Comprobació horitzontal independent
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
                     nextX = p.x;
-                    // FIX: He borrado la linea "nextX = p.y;" que había aquí porque era un bug que teletransportaba al jugador
-                    // No bloquegem Y per evitar que es quedin flotant un sobre l'altre de forma estranya en aquest Sprint
+                }
+                
+                // Comprobació vertical independent per permetre pujar-hi a sobre
+                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
+                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 1) { 
+                        // Caient a sobre (Stacking fix)
+                        nextY = other.y + PLAYER_H;
+                        p.vy = 0;
+                        p.onGround = true;
+                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 1) { 
+                        // Cop al cap per sota
+                        nextY = p.y;
+                        p.vy = 0;
+                    }
                 }
             }
 
