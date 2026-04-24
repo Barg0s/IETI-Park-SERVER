@@ -15,7 +15,7 @@ class GameRoom {
                 precipice: null,
                 platform: null,
                 obstacle: { x: 280, y: 180, width: 20, height: 33, speed: 100, direction: 1, minX: 200, maxX: 500 },
-                key: { x: 225, y: 207, width: 20, height: 47, state: 'floor', carriedBy: null },
+                key: { x: 225, y: 170, width: 20, height: 47, state: 'floor', carriedBy: null },
                 door: { x: 740, y: 160, width: 20, height: 160, isOpen: false }
             },
             2: {
@@ -136,12 +136,6 @@ class GameRoom {
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
-        // Moviment de l'obstacle (Activitat 7)
-        if (this.obstacle) {
-            this.obstacle.x += this.obstacle.speed * this.obstacle.direction * delta;
-            if (this.obstacle.x > this.obstacle.maxX) { this.obstacle.x = this.obstacle.maxX; this.obstacle.direction = -1; }
-            if (this.obstacle.x < this.obstacle.minX) { this.obstacle.x = this.obstacle.minX; this.obstacle.direction = 1; }
-        }
 
         for (let id in this.players) {
             const p = this.players[id];
