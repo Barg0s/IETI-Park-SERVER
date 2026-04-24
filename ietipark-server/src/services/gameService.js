@@ -1,6 +1,6 @@
-const Partida = require('../../models/Partida');
-const Jugador = require('../../models/Jugador');
-const Record = require('../../models/Record');
+const Partida = require('../models/Partida');
+const Jugador = require('../models/Jugador');
+const Record = require('../models/Record');
 
 // Guarda la partida a MongoDB quan s'acaba un nivell
 const guardarPartida = async (room, nivelCompletado, victoria) => {
