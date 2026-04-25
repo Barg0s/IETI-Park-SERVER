@@ -9,24 +9,24 @@ class GameRoom {
         // === CONFIGURACIÓ DELS NIVELLS (Ajustado para Sprites 64x64) ===
         this.levelConfigs = {
             1: {
-                groundY: 64,          // El suelo ahora está a 64px (antes 160 era demasiado alto)
+                groundY: 160,          // El suelo ahora está a 64px (antes 160 era demasiado alto)
                 worldWidth: 800,
                 spawnX: 30,
-                spawnY: 64,          // Aparecen justo sobre el suelo
+                spawnY: 160,          // Aparecen justo sobre el suelo
                 precipice: null,
                 platform: null,
                 // Obstáculo ajustado para ser una amenaza de 64px
-                obstacle: { x: 280, y: 64, width: 32, height: 64, speed: 100, direction: 1, minX: 200, maxX: 500 },
+                obstacle: { x: 280, y: 160, width: 32, height: 64, speed: 100, direction: 1, minX: 200, maxX: 500 },
                 // Llave un poco más alta para que sea fácil de ver
                 key: { x: 225, y: 200, width: 30, height: 30, state: 'floor', carriedBy: null },
                 // Puerta ajustada a la nueva altura del suelo
-                door: { x: 740, y: 64, width: 40, height: 100, isOpen: false }
+                door: { x: 740, y: 160, width: 40, height: 100, isOpen: false }
             },
             2: {
-                groundY: 64,
+                groundY: 160,
                 worldWidth: 800,
                 spawnX: 30,
-                spawnY: 64,
+                spawnY: 160,
                 // Precipicio ajustado al nuevo groundY
                 precipice: { x: 350, y: 0, width: 100, height: 64 },
                 // Plataforma un poco más alta para que tengan que saltar
