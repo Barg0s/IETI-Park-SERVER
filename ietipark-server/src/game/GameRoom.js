@@ -227,12 +227,12 @@ class GameRoom {
 
                 // Colisión Vertical (Corregida para 64x64)
                 if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
-                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 5) {
+                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 15) {
                         // CAYENDO: p se apoya sobre 'other'
                         nextY = other.y + PLAYER_H;
                         p.vy = 0;
                         setOnGround = true;
-                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 5) {
+                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 15) {
                         // SALTANDO: p golpea la cabeza de 'other' desde abajo
                         nextY = other.y - PLAYER_H;
                         p.vy = 0;
