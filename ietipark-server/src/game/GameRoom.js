@@ -9,31 +9,34 @@ class GameRoom {
         // === CONFIGURACIÓ DELS NIVELLS (Ajustado para Sprites 64x64) ===
         this.levelConfigs = {
             1: {
-                groundY: 160,          // El suelo ahora está a 64px (antes 160 era demasiado alto)
-                worldWidth: 800,
-                spawnX: 30,
-                spawnY: 160,          // Aparecen justo sobre el suelo
+                // Mundo de 32 columnas * 32px = 1024px de ancho, 16 filas * 32px = 512 de alto
+                groundY: 160,       // fila 11 del tilemap: Y = (16-1-11)*32 = 160 (LibGDX Y-up)
+                worldWidth: 992,    // 31 tiles * 32px (limite derecho)
+                spawnX: 32,         // Columna 1 del tilemap
+                spawnY: 160,
                 precipice: null,
                 platform: null,
-                // El candado (obstacle) está quieto, un poco más arriba
-                obstacle: { x: 280, y: 192, width: 32, height: 50 },
-                // Llave más grande y más alta
-                key: { x: 225, y: 230, width: 30, height: 47, state: 'floor', carriedBy: null },
-                // Puerta más alta para evitar que la salten por encima
-                door: { x: 740, y: 160, width: 40, height: 200, isOpen: false }
+                // Puerta en columna 9 del tilemap: x = 9*32 = 288, filas 5-10 (desde arriba)
+                // En LibGDX Y-up: top de la puerta = (16-1-5)*32 = 320, bottom = (16-1-10)*32 = 160
+                // --> door.y = 160 (empieza en el suelo), door.height = 160 (5 tiles * 32px)
+                door: { x: 288, y: 160, width: 32, height: 160, isOpen: false },
+                // Llave: en game_data.json sprites: x=216, y=239 (editor Y-down)
+                // En LibGDX Y-up: y = 512 - 239 - 47 = 226. Pero simplificamos al nivel del suelo + un poco.
+                key: { x: 216, y: 192, width: 21, height: 47, state: 'floor', carriedBy: null },
+                // Candado: en game_data.json: x=285, y=335 (editor Y-down)
+                // En LibGDX Y-up: y = 512 - 335 - 33 = 144. Esta por debajo del suelo, usamos encima del suelo.
+                obstacle: { x: 285, y: 160, width: 20, height: 33 },
             },
             2: {
                 groundY: 160,
-                worldWidth: 800,
-                spawnX: 30,
+                worldWidth: 992,
+                spawnX: 32,
                 spawnY: 160,
-                // Precipicio ajustado al nuevo groundY
-                precipice: { x: 350, y: 0, width: 100, height: 64 },
-                // Plataforma un poco más alta para que tengan que saltar
-                platform: { x: 370, y: 180, width: 80, height: 20 },
+                precipice: { x: 350, y: 0, width: 100, height: 160 },
+                platform: { x: 370, y: 192, width: 96, height: 32 },
                 obstacle: null,
                 key: null,
-                door: { x: 740, y: 64, width: 40, height: 100, isOpen: false }
+                door: { x: 288, y: 160, width: 32, height: 160, isOpen: false }
             }
         };
 
