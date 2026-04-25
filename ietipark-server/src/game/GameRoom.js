@@ -16,7 +16,7 @@ class GameRoom {
                 precipice: null,
                 platform: null,
                 // El candado (obstacle) está quieto, un poco más arriba
-                obstacle: { x: 280, y: 192, width: 32, height: 32 },
+                obstacle: { x: 280, y: 192, width: 32, height: 50 },
                 // Llave más grande y más alta
                 key: { x: 225, y: 230, width: 30, height: 47, state: 'floor', carriedBy: null },
                 // Puerta más alta para evitar que la salten por encima
@@ -173,13 +173,11 @@ class GameRoom {
     }
 
     updatePhysics(delta) {
-        // Dentro de updatePhysics(delta)
-        const P_SPEED = 120;      
-        const GRAVITY = -400;     
-        const JUMP_POWER = 300;   
-        const PLAYER_W = 32;      // Hitbox física más estrecha
-        const PLAYER_H = 58;      // Ajustado -2px para que pisen las cabezas exactas
-        const OFFSET_X = 16;      // Offset para centrar la hitbox en el sprite visual de 64x64
+        const P_SPEED = 120;
+        const GRAVITY = -400;
+        const JUMP_POWER = 300;
+        const PLAYER_W = 32;
+        const PLAYER_H = 58;
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
@@ -197,32 +195,40 @@ class GameRoom {
             let nextY = p.y + p.vy * delta;
             let setOnGround = false;
 
-            // --- COL·LISIÓ PORTA TANCADA ---
+            // --- COL·LISIÓ PORTA TANCADA (separación de ejes estricta) ---
             if (!this.door.isOpen) {
                 const door = this.door;
 
-                // colisión horizontal (empuje estricto para que no la puedan atravesar de ninguna manera)
-                if (this.checkCollision(nextX + OFFSET_X, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
-                    if (p.vx > 0) { // Choca yendo a la derecha
-                        nextX = door.x - PLAYER_W - OFFSET_X - 0.1;
-                    } else if (p.vx < 0) { // Choca yendo a la izquierda
-                        nextX = door.x + door.width - OFFSET_X + 0.1;
+                // Primero resolvemos el eje X (el más importante: evitar atravesar lateralmente)
+                const colX = this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
+                if (colX) {
+                    // Empuje estricto: calcula desde qué lado viene el jugador
+                    const pCenterX = p.x + PLAYER_W / 2;
+                    const dCenterX = door.x + door.width / 2;
+                    if (pCenterX < dCenterX) {
+                        // Viene de la izquierda → pararle en el borde izquierdo de la puerta
+                        nextX = door.x - PLAYER_W;
+                    } else {
+                        // Viene de la derecha → pararle en el borde derecho de la puerta
+                        nextX = door.x + door.width;
                     }
                     p.vx = 0;
                 }
 
-                // colisión vertical
-                if (this.checkCollision(p.x + OFFSET_X, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
-                    if (p.vy > 0 && p.y + PLAYER_H <= door.y + 15) {
-                        nextY = door.y - PLAYER_H;
-                        p.vy = 0;
-                    } else if (p.vy < 0 && p.y >= door.y + door.height - 15) {
+                // Después resolvemos el eje Y (colisión vertical: pisar encima o golpear el suelo)
+                const colY = this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
+                if (colY) {
+                    const pCenterY = p.y + PLAYER_H / 2;
+                    const dCenterY = door.y + door.height / 2;
+                    if (pCenterY > dCenterY) {
+                        // Jugador cae sobre la puerta desde arriba
                         nextY = door.y + door.height;
                         p.vy = 0;
                         setOnGround = true;
                     } else {
-                        nextX = p.x;
-                        p.vx = 0;
+                        // Jugador salta y choca por debajo del dintel
+                        nextY = door.y - PLAYER_H;
+                        p.vy = 0;
                     }
                 }
             }
@@ -232,18 +238,25 @@ class GameRoom {
                 if (id === otherId) continue;
                 const other = this.players[otherId];
 
-                // Colisión Horizontal
-                if (this.checkCollision(nextX + OFFSET_X, p.y, PLAYER_W, PLAYER_H, other.x + OFFSET_X, other.y, PLAYER_W, PLAYER_H)) {
-                    nextX = p.x;
+                // Eje X
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
+                    const pCX = p.x + PLAYER_W / 2;
+                    const oCX = other.x + PLAYER_W / 2;
+                    nextX = pCX < oCX ? other.x - PLAYER_W : other.x + PLAYER_W;
+                    p.vx = 0;
                 }
 
-                // Colisión Vertical
-                if (this.checkCollision(p.x + OFFSET_X, nextY, PLAYER_W, PLAYER_H, other.x + OFFSET_X, other.y, PLAYER_W, PLAYER_H)) {
-                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 15) {
+                // Eje Y
+                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
+                    const pCY = p.y + PLAYER_H / 2;
+                    const oCY = other.y + PLAYER_H / 2;
+                    if (pCY > oCY) {
+                        // Cae encima
                         nextY = other.y + PLAYER_H;
                         p.vy = 0;
                         setOnGround = true;
-                    } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 15) {
+                    } else {
+                        // Salta y golpea por abajo
                         nextY = other.y - PLAYER_H;
                         p.vy = 0;
                     }
@@ -253,15 +266,15 @@ class GameRoom {
             // --- COL·LISIÓ PLATAFORMA (Nivell 2) ---
             if (this.platform) {
                 const pl = this.platform;
-                if (this.checkCollision(p.x + OFFSET_X, nextY, PLAYER_W, PLAYER_H, pl.x, pl.y, pl.width, pl.height)) {
-                    if (p.vy < 0 && p.y >= pl.y + pl.height - 2) {
+                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, pl.x, pl.y, pl.width, pl.height)) {
+                    if (p.y >= pl.y) {
                         nextY = pl.y + pl.height; p.vy = 0; setOnGround = true;
                     }
                 }
             }
 
-            // --- COL·LISIÓ TERRA (amb suport de precipici) ---
-            const overSolid = this._isOverSolidGround(nextX + OFFSET_X, PLAYER_W);
+            // --- COL·LISIÓ TERRA ---
+            const overSolid = this._isOverSolidGround(nextX, PLAYER_W);
             if (nextY <= GROUND_Y && overSolid) {
                 nextY = GROUND_Y; p.vy = 0; setOnGround = true;
             } else if (!setOnGround) {
@@ -280,26 +293,26 @@ class GameRoom {
             if (this.currentLevel === 2 && p.y < 0) {
                 const spawnOffset = Object.keys(this.players).indexOf(id) * 40;
                 p.x = cfg.spawnX + spawnOffset;
-                p.y = 400; 
+                p.y = 400;
                 p.vx = 0; p.vy = 0; p.onGround = false;
             }
 
             // --- TASK 13: RECOLLIR LA CLAU ---
             if (this.key && this.key.state === 'floor') {
-                if (this.checkCollision(p.x + OFFSET_X, p.y, PLAYER_W, PLAYER_H, this.key.x, this.key.y, this.key.width, this.key.height)) {
+                if (this.checkCollision(p.x, p.y, PLAYER_W, PLAYER_H, this.key.x, this.key.y, this.key.width, this.key.height)) {
                     this.key.state = 'carried';
                     this.key.carriedBy = id;
                 }
             }
-            
+
             if (this.key && this.key.state === 'carried' && this.key.carriedBy === id) {
-                this.key.x = p.x + 32 - (this.key.width * 0.5); // Centrada visualmente
-                this.key.y = p.y + 64 + 10; // Encima de la cabeza visual
+                this.key.x = p.x + (PLAYER_W / 2) - (this.key.width / 2); // Centrada sobre el jugador
+                this.key.y = p.y + PLAYER_H + 5;  // Encima de la cabeza
             }
 
             // --- TASK 20: CLAU OBRE LA PORTA ---
             if (this.key && !this.door.isOpen && this.key.state === 'carried' && this.key.carriedBy === id) {
-                if (p.x + 64 >= this.door.x - 30) {
+                if (p.x + PLAYER_W >= this.door.x - 10) {
                     this.door.isOpen = true;
                     if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:door_open', { openedBy: p.nickname });
                 }
