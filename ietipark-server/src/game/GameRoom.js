@@ -126,7 +126,8 @@ class GameRoom {
     startGameLoop() {
         setInterval(() => {
             const now = Date.now();
-            const delta = (now - this.lastTime) / 1000;
+            // Límite de delta a 0.05s (aprox 20fps) para evitar el "Tunneling" (atravesar paredes si hay lag)
+            const delta = Math.min((now - this.lastTime) / 1000, 0.05);
             this.lastTime = now;
             this.updatePhysics(delta);
 
