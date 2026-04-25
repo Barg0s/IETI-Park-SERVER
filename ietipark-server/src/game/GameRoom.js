@@ -15,8 +15,8 @@ class GameRoom {
                 spawnY: 160,          // Aparecen justo sobre el suelo
                 precipice: null,
                 platform: null,
-                // Obstáculo ajustado para ser una amenaza de 64px
-                obstacle: { x: 280, y: 160, width: 32, height: 64, speed: 100, direction: 1, minX: 200, maxX: 500 },
+                // El candado (obstacle) está quieto y no se mueve
+                obstacle: { x: 280, y: 160, width: 32, height: 64 },
                 // Llave un poco más alta para que sea fácil de ver
                 key: { x: 225, y: 200, width: 30, height: 30, state: 'floor', carriedBy: null },
                 // Puerta ajustada a la nueva altura del suelo
@@ -89,6 +89,12 @@ class GameRoom {
         }
         this.playersAtDoor.delete(id);
         delete this.players[id];
+
+        // Reiniciar el nivel completamente si la sala se queda vacía
+        if (Object.keys(this.players).length === 0) {
+            console.log('[GAME] Sala vacía. Reiniciando el nivel 1...');
+            this._initLevel(1);
+        }
     }
 
     updatePlayerInputs(id, directionEnum) {
@@ -118,7 +124,17 @@ class GameRoom {
             const delta = (now - this.lastTime) / 1000;
             this.lastTime = now;
             this.updatePhysics(delta);
-            if (this.broadcastState) this.broadcastState(this._buildGameState());
+
+            if (this.broadcastState) {
+                const newState = this._buildGameState();
+                const newStateStr = JSON.stringify(newState);
+
+                // Optimización: Solo enviamos si el estado ha cambiado, reduciendo el tráfico de red drásticamente
+                if (this._lastStateStr !== newStateStr) {
+                    this._lastStateStr = newStateStr;
+                    this.broadcastState(newState);
+                }
+            }
         }, this.tickRate);
     }
 
@@ -180,17 +196,21 @@ class GameRoom {
                     nextX = p.x;
                 }
 
-                // colisión vertical (¡CORREGIDA!)
+                // colisión vertical (¡CORREGIDA PARA EVITAR ATRAVESAR!)
                 if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
-                    if (p.vy > 0) { 
-                        // Saltando hacia arriba: choca por debajo del dintel de la puerta
-                        nextY = door.y - PLAYER_H; 
+                    if (p.vy > 0 && p.y + PLAYER_H <= door.y + 15) {
+                        // Saltando hacia arriba: choca por debajo del dintel
+                        nextY = door.y - PLAYER_H;
                         p.vy = 0;
-                    } else if (p.vy < 0) { 
-                        // Cayendo: aterriza en la parte superior (techo) de la puerta
-                        nextY = door.y + door.height; 
+                    } else if (p.vy < 0 && p.y >= door.y + door.height - 15) {
+                        // Cayendo desde gran altura: aterriza en el techo
+                        nextY = door.y + door.height;
                         p.vy = 0;
-                        setOnGround = true; 
+                        setOnGround = true;
+                    } else {
+                        // Golpe lateral puro resuelto por la Y (Evita el teletransporte mágico al techo)
+                        nextX = p.x;
+                        p.vx = 0;
                     }
                 }
             }
@@ -207,10 +227,10 @@ class GameRoom {
 
                 // Colisión Vertical (Corregida para 64x64)
                 if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
-                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 5) { 
+                    if (p.vy < 0 && p.y >= other.y + PLAYER_H - 5) {
                         // CAYENDO: p se apoya sobre 'other'
-                        nextY = other.y + PLAYER_H; 
-                        p.vy = 0; 
+                        nextY = other.y + PLAYER_H;
+                        p.vy = 0;
                         setOnGround = true;
                     } else if (p.vy > 0 && p.y + PLAYER_H <= other.y + 5) {
                         // SALTANDO: p golpea la cabeza de 'other' desde abajo
