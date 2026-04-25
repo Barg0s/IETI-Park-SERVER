@@ -15,12 +15,12 @@ class GameRoom {
                 spawnY: 160,          // Aparecen justo sobre el suelo
                 precipice: null,
                 platform: null,
-                // El candado (obstacle) está quieto y no se mueve
-                obstacle: { x: 280, y: 160, width: 32, height: 32 },
+                // El candado (obstacle) está quieto, un poco más arriba
+                obstacle: { x: 280, y: 192, width: 32, height: 32 },
                 // Llave más grande y más alta
                 key: { x: 225, y: 230, width: 30, height: 47, state: 'floor', carriedBy: null },
-                // Puerta ajustada a la nueva altura del suelo
-                door: { x: 740, y: 160, width: 40, height: 100, isOpen: false }
+                // Puerta más alta para evitar que la salten por encima
+                door: { x: 740, y: 160, width: 40, height: 200, isOpen: false }
             },
             2: {
                 groundY: 160,
@@ -162,6 +162,9 @@ class GameRoom {
                 ...this.key,
                 carriedByNickname: (this.key.carriedBy && this.players[this.key.carriedBy]) ? this.players[this.key.carriedBy].nickname : null
             };
+        } else {
+            // Enviamos la llave fuera de la pantalla porque la APP Android no borra la llave si viene null
+            state.key = { x: -1000, y: -1000, width: 0, height: 0 };
         }
         if (this.platform) state.platform = this.platform;
         if (this.precipice) state.precipice = this.precipice;
@@ -174,7 +177,7 @@ class GameRoom {
         const GRAVITY = -400;     
         const JUMP_POWER = 300;   
         const PLAYER_W = 32;      // Hitbox física más estrecha
-        const PLAYER_H = 60;      // Hitbox física ajustada
+        const PLAYER_H = 58;      // Ajustado -2px para que pisen las cabezas exactas
         const OFFSET_X = 16;      // Offset para centrar la hitbox en el sprite visual de 64x64
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
@@ -197,9 +200,14 @@ class GameRoom {
             if (!this.door.isOpen) {
                 const door = this.door;
 
-                // colisión horizontal
+                // colisión horizontal (empuje estricto para que no la puedan atravesar de ninguna manera)
                 if (this.checkCollision(nextX + OFFSET_X, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height)) {
-                    nextX = p.x;
+                    if (p.vx > 0) { // Choca yendo a la derecha
+                        nextX = door.x - PLAYER_W - OFFSET_X - 0.1;
+                    } else if (p.vx < 0) { // Choca yendo a la izquierda
+                        nextX = door.x + door.width - OFFSET_X + 0.1;
+                    }
+                    p.vx = 0;
                 }
 
                 // colisión vertical
@@ -323,7 +331,7 @@ class GameRoom {
             console.log(`[GAME] Tots els jugadors han creuat la porta del Nivell ${this.currentLevel}!`);
             if (this.currentLevel === 1) {
                 if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:level_complete', { level: 1, nextLevel: 2 });
-                setTimeout(() => this._switchToLevel2(), 3000);
+                setTimeout(() => this._switchToLevel2(), 1000); // Tarda solo 1 segundo en cambiar
             } else {
                 if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:victory', { message: 'Tots els jugadors han completat el joc!' });
             }
