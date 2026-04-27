@@ -36,6 +36,7 @@ class GameRoom {
                 platform: { x: 370, y: 192, width: 96, height: 32 },
                 obstacle: null,
                 key: null,
+                door: null
             }
         };
 
