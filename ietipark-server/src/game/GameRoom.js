@@ -5,7 +5,6 @@ class GameRoom {
         this.playersAtDoor = new Set();
         this.levelTransitioning = false;
 
-        // === CONFIGURACIÓ DELS NIVELLS ===
         // === CONFIGURACIÓ DELS NIVELLS (Ajustado para Sprites 64x64) ===
         this.levelConfigs = {
             1: {
@@ -105,6 +104,7 @@ class GameRoom {
         }
     }
 
+    // FIX #15: Ahora también reconoce 'jump' además de 'up', y hace trim para robustez
     updatePlayerInputs(id, directionEnum) {
         const player = this.players[id];
         if (!player) return;
@@ -118,19 +118,18 @@ class GameRoom {
 
         if (!directionEnum || directionEnum === 'none') return;
 
-        const dir = directionEnum.toLowerCase();
+        const dir = directionEnum.toLowerCase().trim();
 
         if (dir.includes('left')) inputs.left = true;
         if (dir.includes('right')) inputs.right = true;
-
-        if (dir === 'up') inputs.jump = true;
+        if (dir.includes('up') || dir.includes('jump')) inputs.jump = true;
     }
 
     startGameLoop() {
         setInterval(() => {
             const now = Date.now();
-            // Límite de delta a 0.05s (aprox 20fps) para evitar el "Tunneling" (atravesar paredes si hay lag)
-            const delta = Math.min((now - this.lastTime) / 1000, 0.05);
+            // FIX #13: Cap reducido a 33ms (~30fps) para evitar tunneling con menos margen de error
+            const delta = Math.min((now - this.lastTime) / 1000, 0.033);
             this.lastTime = now;
             this.updatePhysics(delta);
 
@@ -184,7 +183,6 @@ class GameRoom {
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
-
         for (let id in this.players) {
             const p = this.players[id];
 
@@ -205,31 +203,26 @@ class GameRoom {
                 // Primero resolvemos el eje X (el más importante: evitar atravesar lateralmente)
                 const colX = this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
                 if (colX) {
-                    // Empuje estricto: calcula desde qué lado viene el jugador
                     const pCenterX = p.x + PLAYER_W / 2;
                     const dCenterX = door.x + door.width / 2;
                     if (pCenterX < dCenterX) {
-                        // Viene de la izquierda → pararle en el borde izquierdo de la puerta
                         nextX = door.x - PLAYER_W;
                     } else {
-                        // Viene de la derecha → pararle en el borde derecho de la puerta
                         nextX = door.x + door.width;
                     }
                     p.vx = 0;
                 }
 
-                // Después resolvemos el eje Y (colisión vertical: pisar encima o golpear el suelo)
-                const colY = this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
+                // Después resolvemos el eje Y usando nextX ya corregido
+                const colY = this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
                 if (colY) {
                     const pCenterY = p.y + PLAYER_H / 2;
                     const dCenterY = door.y + door.height / 2;
                     if (pCenterY > dCenterY) {
-                        // Jugador cae sobre la puerta desde arriba
                         nextY = door.y + door.height;
                         p.vy = 0;
                         setOnGround = true;
                     } else {
-                        // Jugador salta y choca por debajo del dintel
                         nextY = door.y - PLAYER_H;
                         p.vy = 0;
                     }
@@ -249,8 +242,8 @@ class GameRoom {
                     p.vx = 0;
                 }
 
-                // Eje Y
-                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
+                // FIX #4: Eje Y ahora usa nextX (posición horizontal ya resuelta)
+                if (this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, other.x, other.y, PLAYER_W, PLAYER_H)) {
                     const pCY = p.y + PLAYER_H / 2;
                     const oCY = other.y + PLAYER_H / 2;
                     if (pCY > oCY) {
@@ -267,22 +260,29 @@ class GameRoom {
             }
 
             // --- COL·LISIÓ PLATAFORMA (Nivell 2) ---
+            // FIX #2 + #5: Plataforma one-way (solo colisiona desde arriba) y usa nextX
             if (this.platform) {
                 const pl = this.platform;
-                if (this.checkCollision(p.x, nextY, PLAYER_W, PLAYER_H, pl.x, pl.y, pl.width, pl.height)) {
-                    if (p.y >= pl.y) {
-                        nextY = pl.y + pl.height; p.vy = 0; setOnGround = true;
+                const platformTop = pl.y + pl.height; // Borde superior de la plataforma (Y-up)
+                if (this.checkCollision(nextX, nextY, PLAYER_W, PLAYER_H, pl.x, pl.y, pl.width, pl.height)) {
+                    // Solo aterriza si los pies del jugador estaban sobre (o al nivel de) la plataforma
+                    // y está cayendo (vy <= 0 en Y-up con gravedad negativa)
+                    if (p.y >= platformTop && p.vy <= 0) {
+                        nextY = platformTop;
+                        p.vy = 0;
+                        setOnGround = true;
                     }
+                    // Si viene de abajo, pasa a través (plataforma one-way)
                 }
             }
 
             // --- COL·LISIÓ TERRA ---
+            // FIX #1: _isOverSolidGround ahora usa el centro del jugador para evitar el snap en el borde
             const overSolid = this._isOverSolidGround(nextX, PLAYER_W);
             if (nextY <= GROUND_Y && overSolid) {
                 nextY = GROUND_Y; p.vy = 0; setOnGround = true;
-            } else if (!setOnGround) {
-                setOnGround = false;
             }
+            // FIX #6: Eliminado el bloque "else if (!setOnGround) { setOnGround = false; }" que era código muerto
 
             p.x = nextX;
             p.y = nextY;
@@ -308,14 +308,18 @@ class GameRoom {
                 }
             }
 
+            // FIX #9: La llave aparece justo encima de la cabeza del jugador (Y-up: cabeza = p.y + PLAYER_H)
             if (this.key && this.key.state === 'carried' && this.key.carriedBy === id) {
-                this.key.x = p.x + (PLAYER_W / 2) - (this.key.width / 2); // Centrada sobre el jugador
-                this.key.y = p.y + PLAYER_H + 5;  // Encima de la cabeza
+                this.key.x = p.x + (PLAYER_W / 2) - (this.key.width / 2); // Centrada horizontalmente
+                this.key.y = p.y + PLAYER_H;                               // Justo encima de la cabeza
             }
 
             // --- TASK 20: CLAU OBRE LA PORTA ---
+            // FIX #7: Ahora también verifica que el jugador esté a la altura de la puerta (eje Y)
             if (this.key && !this.door.isOpen && this.key.state === 'carried' && this.key.carriedBy === id) {
-                if (p.x + PLAYER_W >= this.door.x - 10) {
+                const nearDoorX = p.x + PLAYER_W >= this.door.x - 10;
+                const nearDoorY = p.y < this.door.y + this.door.height && p.y + PLAYER_H > this.door.y;
+                if (nearDoorX && nearDoorY) {
                     this.door.isOpen = true;
                     if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:door_open', { openedBy: p.nickname });
                 }
@@ -330,13 +334,12 @@ class GameRoom {
         }
     }
 
-    // Comprova si el punt del terra és sòlid (per al precipici del nivell 2)
+    // FIX #1: Usa el centro horizontal del jugador en lugar del borde para determinar si hay suelo sólido.
+    // Esto elimina el snap/teleport que ocurría cuando un pixel del borde rozaba el precipicio.
     _isOverSolidGround(playerX, playerW) {
         if (!this.precipice) return true;
-        const pRight = playerX + playerW;
-        const gLeft = this.precipice.x;
-        const gRight = this.precipice.x + this.precipice.width;
-        return !(pRight > gLeft && playerX < gRight);
+        const centerX = playerX + playerW / 2;
+        return !(centerX > this.precipice.x && centerX < this.precipice.x + this.precipice.width);
     }
 
     // Task 22: comprova si tots han creuat
@@ -348,7 +351,7 @@ class GameRoom {
             console.log(`[GAME] Tots els jugadors han creuat la porta del Nivell ${this.currentLevel}!`);
             if (this.currentLevel === 1) {
                 if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:level_complete', { level: 1, nextLevel: 2 });
-                setTimeout(() => this._switchToLevel2(), 1000); // Tarda solo 1 segundo en cambiar
+                setTimeout(() => this._switchToLevel2(), 1000);
             } else {
                 if (this.broadcastLevelEvent) this.broadcastLevelEvent('game:victory', { message: 'Tots els jugadors han completat el joc!' });
             }
@@ -359,11 +362,10 @@ class GameRoom {
     _switchToLevel2() {
         console.log('[GAME] Canviant a Nivell 2...');
         this._initLevel(2);
-        // Reaparèixer als jugadors al principi del nivell 2 de forma escalonada
         let i = 0;
         for (let id in this.players) {
             const p = this.players[id];
-            p.x = 30 + i * 40; p.y = 400; // cauen des d'alt
+            p.x = 30 + i * 40; p.y = 400;
             p.vx = 0; p.vy = 0; p.onGround = false; p.crossedDoor = false;
             i++;
         }
