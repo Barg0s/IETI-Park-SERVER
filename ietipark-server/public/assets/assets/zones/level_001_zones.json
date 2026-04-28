@@ -1,0 +1,44 @@
+{
+  "zoneGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "zones": [
+    {
+      "name": "suelo1",
+      "type": "suelo",
+      "gameplayData": "",
+      "x": 3,
+      "y": 354,
+      "width": 317,
+      "height": 154,
+      "color": "blue",
+      "groupId": "__main__"
+    },
+    {
+      "name": "suelo2",
+      "type": "suelo",
+      "gameplayData": "",
+      "x": 578,
+      "y": 354,
+      "width": 444,
+      "height": 156,
+      "color": "blue",
+      "groupId": "__main__"
+    },
+    {
+      "name": "puente",
+      "type": "puente",
+      "gameplayData": "",
+      "x": 578,
+      "y": 355,
+      "width": 256,
+      "height": 27,
+      "color": "purple",
+      "groupId": "__main__"
+    }
+  ]
+}
