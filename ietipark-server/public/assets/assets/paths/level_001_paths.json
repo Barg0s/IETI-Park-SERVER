@@ -9,15 +9,15 @@
   "paths": [
     {
       "id": "path_1",
-      "name": "abrir_puerta",
+      "name": "puente",
       "points": [
         {
-          "x": 305,
-          "y": 256
+          "x": 707,
+          "y": 376
         },
         {
-          "x": 303,
-          "y": 81
+          "x": 450,
+          "y": 374
         }
       ],
       "color": "purple",

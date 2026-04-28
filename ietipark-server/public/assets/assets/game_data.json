@@ -123,6 +123,92 @@
       "depthSensitivity": 0.08,
       "zonesFile": "zones/level_000_zones.json",
       "pathsFile": "paths/level_000_paths.json"
+    },
+    {
+      "name": "level2",
+      "description": "",
+      "gameplayData": "",
+      "layers": [
+        {
+          "name": "suelo",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_001_layer_000.json"
+        },
+        {
+          "name": "plataforma",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_001_layer_001.json"
+        },
+        {
+          "name": "background_deco",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_001_layer_002.json"
+        },
+        {
+          "name": "background_base",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_001_layer_003.json"
+        }
+      ],
+      "layerGroups": [
+        {
+          "id": "__main__",
+          "name": "Main",
+          "collapsed": false
+        }
+      ],
+      "sprites": [],
+      "spriteGroups": [
+        {
+          "id": "__main__",
+          "name": "Main",
+          "collapsed": false
+        }
+      ],
+      "groupId": "__main__",
+      "viewportWidth": 320,
+      "viewportHeight": 180,
+      "viewportX": 0,
+      "viewportY": 0,
+      "viewportAdaptation": "letterbox",
+      "viewportInitialColor": "green",
+      "viewportPreviewColor": "blue",
+      "backgroundColorHex": "#DCDCE1",
+      "depthSensitivity": 0.08,
+      "zonesFile": "zones/level_001_zones.json",
+      "pathsFile": "paths/level_001_paths.json"
     }
   ],
   "levelGroups": [
@@ -242,8 +328,16 @@
   ],
   "zoneTypes": [
     {
-      "name": "Default",
+      "name": "suelo",
       "color": "blue"
+    },
+    {
+      "name": "puerta",
+      "color": "red"
+    },
+    {
+      "name": "puente",
+      "color": "purple"
     }
   ],
   "animationsFile": "animations/animations.json"
