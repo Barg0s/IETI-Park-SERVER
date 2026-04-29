@@ -47,4 +47,6 @@ function getTimestamp() {
 Això garanteix que tots els logs del servidor (connexions, events de joc, errors) tinguin la marca temporal automàticament.
 
 ---
+ ## 4. Aplicació mòbil i Flutter Web
 
+ **Augmentat** el tamany dels jugadors per una major facilitat de localitzar-los al joc i refactorització d'algunes parts del codi.
