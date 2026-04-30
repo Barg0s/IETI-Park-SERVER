@@ -23,11 +23,16 @@ class GameRoom {
                 worldWidth: 992,
                 spawnX: 32,
                 spawnY: 160,
-                precipice: { x: 350, y: 0, width: 100, height: 160 },
-                platform: { x: 370, y: 192, width: 96, height: 32 },
+                // Precipici: buit del sol entre x=400 i x=528
+                precipice: { x: 400, y: 0, width: 128, height: 160 },
+                // Plataforma: comença retirada a la dreta (x=560), es mou fins a x=416 quan es prem el botó
+                platform: { x: 560, y: 192, width: 96, height: 32, targetX: 416, speed: 80, moving: false },
+                // Botó: el jugador que arriba a l'altra banda el prem per moure la plataforma
+                button: { x: 564, y: 160, width: 32, height: 32, pressed: false },
                 obstacle: null,
-                key: null,
-                door: { x: 288, y: 0, width: 32, height: 160, isOpen: false }
+                // Clau alta: y=228 > rango 1 jugador (160+58=218), necessita apilar 2 jugadors
+                key: { x: 700, y: 228, width: 21, height: 47, state: 'floor', carriedBy: null },
+                door: { x: 880, y: 160, width: 32, height: 160, isOpen: false }
             }
         };
 
@@ -51,6 +56,8 @@ class GameRoom {
         this.door = structuredClone(cfg.door);
         this.platform = cfg.platform ? { ...cfg.platform } : null;
         this.precipice = cfg.precipice ? { ...cfg.precipice } : null;
+        // Botó de la plataforma mòbil (Nivell 2)
+        this.button = cfg.button ? { ...cfg.button } : null;
     }
 
     // Callbacks injectats des de fora
@@ -161,8 +168,9 @@ class GameRoom {
             // Enviamos la llave fuera de la pantalla porque la APP Android no borra la llave si viene null
             state.key = { x: -1000, y: -1000, width: 0, height: 0 };
         }
-        if (this.platform) state.platform = this.platform;
+        if (this.platform) state.platform = { ...this.platform, x: parseFloat(this.platform.x.toFixed(1)) };
         if (this.precipice) state.precipice = this.precipice;
+        if (this.button) state.button = this.button;
         return state;
     }
 
@@ -174,6 +182,17 @@ class GameRoom {
         const PLAYER_H = 58;
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
+
+        // --- LÓGICA DE PLATAFORMA MÓVIL (Nivell 2) ---
+        if (this.platform && this.platform.moving) {
+            if (this.platform.x > this.platform.targetX) {
+                this.platform.x -= this.platform.speed * delta;
+                if (this.platform.x <= this.platform.targetX) {
+                    this.platform.x = this.platform.targetX;
+                    this.platform.moving = false; // Se detiene al llegar
+                }
+            }
+        }
 
         for (let id in this.players) {
             const p = this.players[id];
@@ -218,6 +237,19 @@ class GameRoom {
                         nextY = door.y - PLAYER_H;
                         p.vy = 0;
                     }
+                }
+            }
+
+            // --- COLISIONES CON PAREDES DEL PRECIPICIO ---
+            // Evita el bug del "teleport" al caer: si estás debajo del suelo, no puedes volver a entrar a la tierra
+            if (this.precipice && p.y < GROUND_Y) {
+                // Pared izquierda (bloque sólido antes del precipicio)
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, -1000, -1000, 1000 + this.precipice.x, 1000 + GROUND_Y)) {
+                    if (p.vx < 0) { nextX = this.precipice.x; p.vx = 0; }
+                }
+                // Pared derecha (bloque sólido después del precipicio)
+                if (this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, this.precipice.x + this.precipice.width, -1000, 2000, 1000 + GROUND_Y)) {
+                    if (p.vx > 0) { nextX = this.precipice.x + this.precipice.width - PLAYER_W; p.vx = 0; }
                 }
             }
 
@@ -280,19 +312,29 @@ class GameRoom {
             p.y = nextY;
             p.onGround = setOnGround;
 
-            // Límits del món
+            // --- LÍMITES DEL MUNDO Y PRECIPICIO ---
             if (p.x < 0) p.x = 0;
-            if (p.x > cfg.worldWidth) p.x = cfg.worldWidth;
+            if (p.x > cfg.worldWidth - PLAYER_W) p.x = cfg.worldWidth - PLAYER_W;
 
             // Nivell 2: caiguda al precipici → reaparèixer al principi
-            if (this.currentLevel === 2 && p.y < 0) {
+            // Cae completamente por debajo de la pantalla (y < -64) antes de respawnear
+            if (this.currentLevel === 2 && p.y < -64) {
                 const spawnOffset = Object.keys(this.players).indexOf(id) * 40;
                 p.x = cfg.spawnX + spawnOffset;
-                p.y = 400;
+                p.y = 400; // Caen desde el cielo de forma escalonada (spawnOffset) para evitar atascarse
                 p.vx = 0; p.vy = 0; p.onGround = false;
             }
 
-            // --- TASK 13: RECOLLIR LA CLAU ---
+            // --- TASK 27: BOTÓN PLATAFORMA MÓVIL ---
+            if (this.button && !this.button.pressed) {
+                if (this.checkCollision(p.x, p.y, PLAYER_W, PLAYER_H, this.button.x, this.button.y, this.button.width, this.button.height)) {
+                    this.button.pressed = true;
+                    if (this.platform) this.platform.moving = true; // Activa el movimiento
+                    console.log(`[GAME] ${p.nickname} ha pulsado el botón! La plataforma se mueve.`);
+                }
+            }
+
+            // --- TASK 13/26: RECOLLIR LA CLAU ---
             if (this.key && this.key.state === 'floor') {
                 if (this.checkCollision(p.x, p.y, PLAYER_W, PLAYER_H, this.key.x, this.key.y, this.key.width, this.key.height)) {
                     this.key.state = 'carried';
