@@ -24,7 +24,7 @@ class GameRoom {
                 spawnX: 32,
                 spawnY: 160,
                 // Precipici: buit del sol entre x=400 i x=528
-                precipice: { x: 400, y: 0, width: 128, height: 160 },
+                precipice: { x: 400, y: 0, width: 80, height: 160 },
                 // Plataforma: comença retirada a la dreta (x=560), es mou fins a x=416 quan es prem el botó
                 platform: { x: 560, y: 192, width: 96, height: 32, targetX: 416, speed: 80, moving: false },
                 // Botó: el jugador que arriba a l'altra banda el prem per moure la plataforma
