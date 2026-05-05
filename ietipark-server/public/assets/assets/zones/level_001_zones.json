@@ -22,10 +22,10 @@
       "name": "suelo2",
       "type": "suelo",
       "gameplayData": "",
-      "x": 578,
-      "y": 354,
-      "width": 444,
-      "height": 156,
+      "x": 675,
+      "y": 355,
+      "width": 349,
+      "height": 155,
       "color": "blue",
       "groupId": "__main__"
     },
@@ -33,11 +33,22 @@
       "name": "puente",
       "type": "puente",
       "gameplayData": "",
-      "x": 578,
-      "y": 355,
-      "width": 256,
-      "height": 27,
+      "x": 485,
+      "y": 298,
+      "width": 124,
+      "height": 14,
       "color": "purple",
+      "groupId": "__main__"
+    },
+    {
+      "name": "puerta",
+      "type": "puerta",
+      "gameplayData": "",
+      "x": 901,
+      "y": 129,
+      "width": 22,
+      "height": 224,
+      "color": "red",
       "groupId": "__main__"
     }
   ]

@@ -12,15 +12,31 @@
       "name": "puente",
       "points": [
         {
-          "x": 707,
-          "y": 376
+          "x": 556,
+          "y": 306
         },
         {
-          "x": 450,
-          "y": 374
+          "x": 375,
+          "y": 307
         }
       ],
       "color": "purple",
+      "groupId": "__main__"
+    },
+    {
+      "id": "path_2",
+      "name": "puerta",
+      "points": [
+        {
+          "x": 914,
+          "y": 257
+        },
+        {
+          "x": 914,
+          "y": 46
+        }
+      ],
+      "color": "red",
       "groupId": "__main__"
     }
   ],

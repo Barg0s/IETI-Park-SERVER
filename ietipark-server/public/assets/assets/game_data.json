@@ -143,7 +143,7 @@
           "tileMapFile": "tilemaps/level_001_layer_000.json"
         },
         {
-          "name": "plataforma",
+          "name": "puerta",
           "gameplayData": "",
           "x": 0,
           "y": 0,
@@ -156,7 +156,7 @@
           "tileMapFile": "tilemaps/level_001_layer_001.json"
         },
         {
-          "name": "background_deco",
+          "name": "plataforma",
           "gameplayData": "",
           "x": 0,
           "y": 0,
@@ -169,7 +169,7 @@
           "tileMapFile": "tilemaps/level_001_layer_002.json"
         },
         {
-          "name": "background_base",
+          "name": "background_deco",
           "gameplayData": "",
           "x": 0,
           "y": 0,
@@ -180,6 +180,19 @@
           "visible": true,
           "groupId": "__main__",
           "tileMapFile": "tilemaps/level_001_layer_003.json"
+        },
+        {
+          "name": "background_base",
+          "gameplayData": "",
+          "x": 0,
+          "y": 0,
+          "depth": 0.0,
+          "tilesSheetFile": "media/sunken_blocky.png",
+          "tilesWidth": 32,
+          "tilesHeight": 32,
+          "visible": true,
+          "groupId": "__main__",
+          "tileMapFile": "tilemaps/level_001_layer_004.json"
         }
       ],
       "layerGroups": [
@@ -189,7 +202,53 @@
           "collapsed": false
         }
       ],
-      "sprites": [],
+      "sprites": [
+        {
+          "name": "boton",
+          "gameplayData": "",
+          "type": "boton",
+          "animationId": "anim_1777902666199897",
+          "x": 721,
+          "y": 349,
+          "width": 32,
+          "height": 32,
+          "imageFile": "media/ButtonRed-Sheet.png",
+          "flipX": false,
+          "flipY": false,
+          "depth": 0.0,
+          "groupId": "__main__"
+        },
+        {
+          "name": "llave",
+          "gameplayData": "",
+          "type": "llave",
+          "animationId": "anim_1776694275268338",
+          "x": 816,
+          "y": 138,
+          "width": 21,
+          "height": 47,
+          "imageFile": "media/Key 8 - GOLD - Spritesheet.png",
+          "flipX": false,
+          "flipY": false,
+          "depth": 0.0,
+          "groupId": "__main__"
+        },
+        {
+          "name": "candado",
+          "gameplayData": "",
+          "type": "candado",
+          "animationId": "anim_1776696025189779",
+          "x": 903,
+          "y": 319,
+          "width": 20,
+          "height": 33,
+          "imageFile": "media/Triangle Padlock - GOLD - Spritesheet.png",
+          "flipX": false,
+          "flipY": false,
+          "depth": 0.0,
+          "groupId": "__main__"
+        }
+      ],
       "spriteGroups": [
         {
           "id": "__main__",
@@ -200,8 +259,8 @@
       "groupId": "__main__",
       "viewportWidth": 320,
       "viewportHeight": 180,
-      "viewportX": 0,
-      "viewportY": 0,
+      "viewportX": 1,
+      "viewportY": 211,
       "viewportAdaptation": "letterbox",
       "viewportInitialColor": "green",
       "viewportPreviewColor": "blue",
@@ -315,6 +374,15 @@
       "mediaType": "spritesheet",
       "tileWidth": 20,
       "tileHeight": 33,
+      "selectionColorHex": "#FFCC00",
+      "groupId": "__main__"
+    },
+    {
+      "name": "ButtonRed",
+      "fileName": "media/ButtonRed-Sheet.png",
+      "mediaType": "spritesheet",
+      "tileWidth": 32,
+      "tileHeight": 32,
       "selectionColorHex": "#FFCC00",
       "groupId": "__main__"
     }

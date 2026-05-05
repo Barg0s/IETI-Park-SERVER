@@ -3693,6 +3693,134 @@
           ]
         }
       ]
+    },
+    {
+      "id": "anim_1777902666199897",
+      "name": "boton",
+      "mediaFile": "media/ButtonRed-Sheet.png",
+      "startFrame": 0,
+      "endFrame": 5,
+      "fps": 12.0,
+      "loop": false,
+      "groupId": "__main__",
+      "anchorX": 0.4856366061352211,
+      "anchorY": 0.7882938340002051,
+      "anchorColor": "red",
+      "hitBoxes": [
+        {
+          "id": "__hb_1777902698239932_0",
+          "name": "Hit Box 1",
+          "color": "green",
+          "x": 0.09375,
+          "y": 0.34375,
+          "width": 0.8125,
+          "height": 0.59375
+        }
+      ],
+      "frameRigs": [
+        {
+          "frame": 0,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902698239932_0",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.34375,
+              "width": 0.8125,
+              "height": 0.59375
+            }
+          ]
+        },
+        {
+          "frame": 1,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902784534221_5",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.5,
+              "width": 0.8125,
+              "height": 0.4375
+            }
+          ]
+        },
+        {
+          "frame": 2,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902784534221_5",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.5,
+              "width": 0.8125,
+              "height": 0.4375
+            }
+          ]
+        },
+        {
+          "frame": 3,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902784534221_5",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.5,
+              "width": 0.8125,
+              "height": 0.4375
+            }
+          ]
+        },
+        {
+          "frame": 4,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902784534221_5",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.5,
+              "width": 0.8125,
+              "height": 0.4375
+            }
+          ]
+        },
+        {
+          "frame": 5,
+          "anchorX": 0.4856366061352211,
+          "anchorY": 0.7882938340002051,
+          "anchorColor": "red",
+          "hitBoxes": [
+            {
+              "id": "__hb_1777902784534221_5",
+              "name": "Hit Box 1",
+              "color": "green",
+              "x": 0.09375,
+              "y": 0.5,
+              "width": 0.8125,
+              "height": 0.4375
+            }
+          ]
+        }
+      ]
     }
   ]
 }
