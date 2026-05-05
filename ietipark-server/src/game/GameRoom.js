@@ -23,16 +23,18 @@ class GameRoom {
                 worldWidth: 992,
                 spawnX: 32,
                 spawnY: 160,
-                // Precipici: buit del sol entre x=400 i x=528
-                precipice: { x: 400, y: 0, width: 80, height: 160 },
-                // Plataforma: comença retirada a la dreta (x=560), es mou fins a x=416 quan es prem el botó
-                platform: { x: 560, y: 192, width: 96, height: 32, targetX: 416, speed: 80, moving: false },
-                // Botó: el jugador que arriba a l'altra banda el prem per moure la plataforma
-                button: { x: 564, y: 160, width: 32, height: 32, pressed: false },
+                // Precipici: Buit real del tilemap (columnes 10 a 20) -> x=320 fins x=672 (Amplada=352)
+                precipice: { x: 320, y: 0, width: 352, height: 160 },
+                // Plataforma: Comença a l'esquerra (x=320) perquè el jugador 1 pugui pujar-hi.
+                // Es mourà fins a la dreta (x=576) quan es premi el botó.
+                platform: { x: 320, y: 192, width: 96, height: 32, targetX: 576, speed: 80, moving: false },
+                // Botó: el posem a la plataforma mateix!
+                button: { x: 352, y: 224, width: 32, height: 32, pressed: false },
                 obstacle: null,
-                // Clau alta: y=228 > rango 1 jugador (160+58=218), necessita apilar 2 jugadors
-                key: { x: 700, y: 228, width: 21, height: 47, state: 'floor', carriedBy: null },
-                door: { x: 880, y: 160, width: 32, height: 160, isOpen: false }
+                // Clau alta: y=228 > rango 1 jugador (160+58=218), necessita apilar 2 jugadors a terra ferm (dreta)
+                key: { x: 750, y: 228, width: 21, height: 47, state: 'floor', carriedBy: null },
+                // Porta a la columna 28 del tilemap
+                door: { x: 896, y: 160, width: 32, height: 160, isOpen: false }
             }
         };
 
@@ -185,12 +187,18 @@ class GameRoom {
 
         // --- LÓGICA DE PLATAFORMA MÓVIL (Nivell 2) ---
         if (this.platform && this.platform.moving) {
-            if (this.platform.x > this.platform.targetX) {
-                this.platform.x -= this.platform.speed * delta;
-                if (this.platform.x <= this.platform.targetX) {
-                    this.platform.x = this.platform.targetX;
-                    this.platform.moving = false; // Se detiene al llegar
-                }
+            // Movimiento de vaivén continuo
+            if (!this.platform.direction) this.platform.direction = 1; // 1 = derecha, -1 = izquierda
+            
+            this.platform.x += this.platform.speed * this.platform.direction * delta;
+            
+            // Límites (va de x=320 a x=576)
+            if (this.platform.x >= this.platform.targetX) {
+                this.platform.x = this.platform.targetX;
+                this.platform.direction = -1; // Cambia a la izquierda
+            } else if (this.platform.x <= 320) {
+                this.platform.x = 320;
+                this.platform.direction = 1; // Cambia a la derecha
             }
         }
 
