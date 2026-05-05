@@ -15,7 +15,7 @@ class GameRoom {
                 precipice: null,
                 platform: null,
                 door: { x: 288, y: 160, width: 32, height: 160, isOpen: false },
-                key: { x: 216, y: 192, width: 21, height: 47, state: 'floor', carriedBy: null },
+                key: { x: 216, y: 340, width: 21, height: 47, state: 'floor', carriedBy: null },
                 obstacle: { x: 285, y: 160, width: 20, height: 33 },
             },
             2: {
@@ -25,14 +25,14 @@ class GameRoom {
                 spawnY: 160,
                 // Precipici: Buit real del tilemap (columnes 10 a 20) -> x=320 fins x=672 (Amplada=352)
                 precipice: { x: 320, y: 0, width: 352, height: 160 },
-                // Plataforma: "Stepping stone" dibuixada al tilemap (col 15 a 18, row 9)
-                platform: { x: 480, y: 224, width: 128, height: 32, moving: false },
-                // Botó: A l'altra banda del precipici (dreta), el jugador 1 hi salta des de la plataforma
+                // Plataforma: "Ferry" que es mou de banda a banda
+                platform: { x: 320, y: 192, width: 128, height: 32, moving: false, speed: 100, direction: 1, minX: 320, maxX: 544 },
+                // Botó: A l'altra banda del precipici (dreta)
                 button: { x: 680, y: 160, width: 32, height: 32, pressed: false },
                 // Obstacle: Com al nivell 1, enganxat a la porta
                 obstacle: { x: 893, y: 160, width: 20, height: 33 },
-                // Clau alta: Necessiten apilar-se de nou a la dreta per agafar-la
-                key: { x: 750, y: 228, width: 21, height: 47, state: 'floor', carriedBy: null },
+                // Clau alta: y=340 (requereix stacking + jump)
+                key: { x: 750, y: 340, width: 21, height: 47, state: 'floor', carriedBy: null },
                 // Porta a la columna 28 del tilemap
                 door: { x: 896, y: 160, width: 32, height: 160, isOpen: false }
             }
@@ -185,26 +185,16 @@ class GameRoom {
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
-        // --- LÓGICA DE PLATAFORMA QUE SE EXPANDE (Nivell 2) ---
+        // --- LÓGICA DE PLATAFORMA OSCILANTE (Nivell 2) ---
         if (this.platform && this.platform.moving) {
-            // Se expande para tapar el precipicio de x=320 a x=672 (width 352)
-            const expSpeed = 150 * delta; // px por frame
-            
-            if (this.platform.x > 320) {
-                this.platform.x -= expSpeed;
-                if (this.platform.x < 320) this.platform.x = 320;
-            }
-            
-            let currentRightEdge = this.platform.x + this.platform.width;
-            if (currentRightEdge < 672) {
-                currentRightEdge += expSpeed * 2;
-                if (currentRightEdge > 672) currentRightEdge = 672;
-            }
-            
-            this.platform.width = currentRightEdge - this.platform.x;
-            
-            if (this.platform.x === 320 && this.platform.width === 352) {
-                this.platform.moving = false; // Expansión terminada
+            this.platform.x += this.platform.speed * this.platform.direction * delta;
+
+            if (this.platform.x >= this.platform.maxX) {
+                this.platform.x = this.platform.maxX;
+                this.platform.direction = -1;
+            } else if (this.platform.x <= this.platform.minX) {
+                this.platform.x = this.platform.minX;
+                this.platform.direction = 1;
             }
         }
 
