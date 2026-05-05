@@ -8,9 +8,9 @@ class GameRoom {
         // === CONFIGURACIÓ DELS NIVELLS (Ajustado para Sprites 64x64) ===
         this.levelConfigs = {
             1: {
-                groundY: 160,       
-                worldWidth: 992,    
-                spawnX: 32,         
+                groundY: 160,
+                worldWidth: 992,
+                spawnX: 32,
                 spawnY: 160,
                 precipice: null,
                 platform: null,
@@ -26,7 +26,7 @@ class GameRoom {
                 // Precipici: Buit real del tilemap (columnes 10 a 20) -> x=320 fins x=672 (Amplada=352)
                 precipice: { x: 320, y: 0, width: 352, height: 160 },
                 // Plataforma: "Ferry" que es mou de banda a banda
-                platform: { x: 320, y: 192, width: 128, height: 32, moving: false, speed: 100, direction: 1, minX: 320, maxX: 544 },
+                platform: { x: 480, y: 192, width: 128, height: 32, moving: false, speed: 100, direction: 1, minX: 320, maxX: 544 },
                 // Botó: A l'altra banda del precipici (dreta)
                 button: { x: 680, y: 160, width: 32, height: 32, pressed: false },
                 // Obstacle: Com al nivell 1, enganxat a la porta
