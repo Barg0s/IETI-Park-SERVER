@@ -25,13 +25,13 @@ class GameRoom {
                 spawnY: 160,
                 // Precipici: Buit real del tilemap (columnes 10 a 20) -> x=320 fins x=672 (Amplada=352)
                 precipice: { x: 320, y: 0, width: 352, height: 160 },
-                // Plataforma: Comença a l'esquerra (x=320) perquè el jugador 1 pugui pujar-hi.
-                // Es mourà fins a la dreta (x=576) quan es premi el botó.
-                platform: { x: 320, y: 192, width: 96, height: 32, targetX: 576, speed: 80, moving: false },
-                // Botó: el posem a la plataforma mateix!
-                button: { x: 352, y: 224, width: 32, height: 32, pressed: false },
-                obstacle: null,
-                // Clau alta: y=228 > rango 1 jugador (160+58=218), necessita apilar 2 jugadors a terra ferm (dreta)
+                // Plataforma: "Stepping stone" dibuixada al tilemap (col 15 a 18, row 9)
+                platform: { x: 480, y: 224, width: 128, height: 32, moving: false },
+                // Botó: A l'altra banda del precipici (dreta), el jugador 1 hi salta des de la plataforma
+                button: { x: 680, y: 160, width: 32, height: 32, pressed: false },
+                // Obstacle: Com al nivell 1, enganxat a la porta
+                obstacle: { x: 893, y: 160, width: 20, height: 33 },
+                // Clau alta: Necessiten apilar-se de nou a la dreta per agafar-la
                 key: { x: 750, y: 228, width: 21, height: 47, state: 'floor', carriedBy: null },
                 // Porta a la columna 28 del tilemap
                 door: { x: 896, y: 160, width: 32, height: 160, isOpen: false }
@@ -185,20 +185,26 @@ class GameRoom {
         const cfg = this.levelConfigs[this.currentLevel];
         const GROUND_Y = cfg.groundY;
 
-        // --- LÓGICA DE PLATAFORMA MÓVIL (Nivell 2) ---
+        // --- LÓGICA DE PLATAFORMA QUE SE EXPANDE (Nivell 2) ---
         if (this.platform && this.platform.moving) {
-            // Movimiento de vaivén continuo
-            if (!this.platform.direction) this.platform.direction = 1; // 1 = derecha, -1 = izquierda
+            // Se expande para tapar el precipicio de x=320 a x=672 (width 352)
+            const expSpeed = 150 * delta; // px por frame
             
-            this.platform.x += this.platform.speed * this.platform.direction * delta;
+            if (this.platform.x > 320) {
+                this.platform.x -= expSpeed;
+                if (this.platform.x < 320) this.platform.x = 320;
+            }
             
-            // Límites (va de x=320 a x=576)
-            if (this.platform.x >= this.platform.targetX) {
-                this.platform.x = this.platform.targetX;
-                this.platform.direction = -1; // Cambia a la izquierda
-            } else if (this.platform.x <= 320) {
-                this.platform.x = 320;
-                this.platform.direction = 1; // Cambia a la derecha
+            let currentRightEdge = this.platform.x + this.platform.width;
+            if (currentRightEdge < 672) {
+                currentRightEdge += expSpeed * 2;
+                if (currentRightEdge > 672) currentRightEdge = 672;
+            }
+            
+            this.platform.width = currentRightEdge - this.platform.x;
+            
+            if (this.platform.x === 320 && this.platform.width === 352) {
+                this.platform.moving = false; // Expansión terminada
             }
         }
 
