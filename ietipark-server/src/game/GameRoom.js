@@ -60,6 +60,7 @@ class GameRoom {
         this.precipice = cfg.precipice ? { ...cfg.precipice } : null;
         // Botó de la plataforma mòbil (Nivell 2)
         this.button = cfg.button ? { ...cfg.button } : null;
+        this._partidaInici = Date.now(); // Marca el inici del nivell per a les estadístiques
     }
 
     // Callbacks injectats des de fora
