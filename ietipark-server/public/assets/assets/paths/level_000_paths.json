@@ -1,0 +1,28 @@
+{
+  "pathGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "paths": [
+    {
+      "id": "path_1",
+      "name": "abrir_puerta",
+      "points": [
+        {
+          "x": 305,
+          "y": 256
+        },
+        {
+          "x": 303,
+          "y": 81
+        }
+      ],
+      "color": "purple",
+      "groupId": "__main__"
+    }
+  ],
+  "pathBindings": []
+}

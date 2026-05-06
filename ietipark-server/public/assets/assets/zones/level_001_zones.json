@@ -1,0 +1,55 @@
+{
+  "zoneGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "zones": [
+    {
+      "name": "suelo1",
+      "type": "suelo",
+      "gameplayData": "",
+      "x": 3,
+      "y": 354,
+      "width": 317,
+      "height": 154,
+      "color": "blue",
+      "groupId": "__main__"
+    },
+    {
+      "name": "suelo2",
+      "type": "suelo",
+      "gameplayData": "",
+      "x": 675,
+      "y": 355,
+      "width": 349,
+      "height": 155,
+      "color": "blue",
+      "groupId": "__main__"
+    },
+    {
+      "name": "puente",
+      "type": "puente",
+      "gameplayData": "",
+      "x": 487,
+      "y": 267,
+      "width": 147,
+      "height": 13,
+      "color": "purple",
+      "groupId": "__main__"
+    },
+    {
+      "name": "puerta",
+      "type": "puerta",
+      "gameplayData": "",
+      "x": 901,
+      "y": 129,
+      "width": 22,
+      "height": 224,
+      "color": "red",
+      "groupId": "__main__"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "pathGroups": [
+    {
+      "id": "__main__",
+      "name": "Main",
+      "collapsed": false
+    }
+  ],
+  "paths": [
+    {
+      "id": "path_1",
+      "name": "puente",
+      "points": [
+        {
+          "x": 561,
+          "y": 275
+        },
+        {
+          "x": 370,
+          "y": 273
+        }
+      ],
+      "color": "purple",
+      "groupId": "__main__"
+    },
+    {
+      "id": "path_2",
+      "name": "puerta",
+      "points": [
+        {
+          "x": 914,
+          "y": 257
+        },
+        {
+          "x": 914,
+          "y": 46
+        }
+      ],
+      "color": "red",
+      "groupId": "__main__"
+    }
+  ],
+  "pathBindings": []
+}
