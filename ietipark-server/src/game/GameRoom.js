@@ -238,9 +238,11 @@ class GameRoom {
             // --- COL·LISIÓ PORTA TANCADA (separación de ejes estricta) ---
             if (!this.door.isOpen) {
                 const door = this.door;
+                const blockingHeight = 2000; // FIX: Pared invisible infinita hacia arriba para evitar que se salten la puerta apilándose
 
                 // Primero resolvemos el eje X (el más importante: evitar atravesar lateralmente)
-                const colX = this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, door.height);
+                // Usamos blockingHeight para que la pared llegue hasta el cielo
+                const colX = this.checkCollision(nextX, p.y, PLAYER_W, PLAYER_H, door.x, door.y, door.width, blockingHeight);
                 if (colX) {
                     const pCenterX = p.x + PLAYER_W / 2;
                     const dCenterX = door.x + door.width / 2;
