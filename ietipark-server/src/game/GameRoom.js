@@ -106,25 +106,34 @@ class GameRoom {
         }
     }
 
-    // FIX #15: Ahora también reconoce 'jump' además de 'up', y hace trim para robustez
+    // FIX #15: Permite salto diagonal (moverse y saltar a la vez)
     updatePlayerInputs(id, directionEnum) {
         const player = this.players[id];
         if (!player) return;
 
-        const inputs = player.inputs;
+        const dir = (directionEnum || 'none').toLowerCase().trim();
 
-        // RESET siempre primero
-        inputs.left = false;
-        inputs.right = false;
-        inputs.jump = false;
+        // Si el cliente envía 'none' (al soltar un botón), limpiamos todo.
+        if (dir === 'none') {
+            player.inputs.left = false;
+            player.inputs.right = false;
+            player.inputs.jump = false;
+            return;
+        }
 
-        if (!directionEnum || directionEnum === 'none') return;
+        // Si es movimiento horizontal, actualizamos solo el eje X
+        if (dir.includes('left')) {
+            player.inputs.left = true;
+            player.inputs.right = false;
+        } else if (dir.includes('right')) {
+            player.inputs.right = true;
+            player.inputs.left = false;
+        }
 
-        const dir = directionEnum.toLowerCase().trim();
-
-        if (dir.includes('left')) inputs.left = true;
-        if (dir.includes('right')) inputs.right = true;
-        if (dir.includes('up') || dir.includes('jump')) inputs.jump = true;
+        // Si es salto, activamos el salto SIN borrar el eje X
+        if (dir.includes('up') || dir.includes('jump')) {
+            player.inputs.jump = true;
+        }
     }
 
     startGameLoop() {
@@ -187,8 +196,10 @@ class GameRoom {
         const GROUND_Y = cfg.groundY;
 
         // --- LÓGICA DE PLATAFORMA OSCILANTE (Nivell 2) ---
+        let platformDx = 0;
         if (this.platform && this.platform.moving) {
-            this.platform.x += this.platform.speed * this.platform.direction * delta;
+            platformDx = this.platform.speed * this.platform.direction * delta;
+            this.platform.x += platformDx;
 
             if (this.platform.x >= this.platform.maxX) {
                 this.platform.x = this.platform.maxX;
@@ -211,6 +222,18 @@ class GameRoom {
             let nextX = p.x + p.vx * delta;
             let nextY = p.y + p.vy * delta;
             let setOnGround = false;
+
+            // Mover al jugador con la plataforma si está apoyado en ella
+            if (this.platform && platformDx !== 0 && p.onGround) {
+                const platformTop = this.platform.y + this.platform.height;
+                // Verificamos si estaba exactamente en la cima de la plataforma (margen pequeño por floats)
+                if (Math.abs(p.y - platformTop) < 0.1) {
+                    // Verificamos si estaba sobre la plataforma horizontalmente (usando las coordenadas antes de que la plataforma se moviera, aprox)
+                    if (p.x + PLAYER_W > this.platform.x - platformDx && p.x < this.platform.x - platformDx + this.platform.width) {
+                        nextX += platformDx;
+                    }
+                }
+            }
 
             // --- COL·LISIÓ PORTA TANCADA (separación de ejes estricta) ---
             if (!this.door.isOpen) {
